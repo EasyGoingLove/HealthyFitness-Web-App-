@@ -5,6 +5,7 @@ import bcrypt from 'bcryptjs';
 const register = (req,res) => {
   //console.log(req.body);
   const email = req.body.email;
+  const plan = req.body.plan;
   const name = req.body.name;
   const pass = req.body.pass;            
   const passSec = req.body.passSec;
@@ -219,7 +220,7 @@ const register = (req,res) => {
         let hashedPass = await bcrypt.hash(pass, 8);
         
         db.query('INSERT INTO basicusers SET ?', {
-            email:email , name:name , password:hashedPass,
+            email:email , name:name , password:hashedPass, plan:plan,
             dataOfBirth:dataOfBirth, proffesion:proffesion ,phoneNum:phoneNum,
             iskamDa:iskamDa,alsoTo:alsoTo,skalaMotiviran:skalaMotiviran,
             opitHranRejim:opitHranRejim, kakuwHranRejim:kakuwHranRejim,
