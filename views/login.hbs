@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Pragma" content="no-cache" />
+     <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <title>Влизане</title>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <h2>HealthyFitness</h2><br>
+      <h2>Влизане</h2>
+    </div>
+                {{#if message}}
+                <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <strong>{{message}}</strong> 
+                </div>
+                {{/if}}
+    <!-- Login Form -->
+    <form action="/auth/login" method="POST">
+      <input type="text" id="email" class="fadeIn second" name="email" placeholder="Емейл">
+      <input type="password" id="pass" class="fadeIn second" name="pass" placeholder="Парола">
+      <input type="submit" class="fadeIn fourth" value="Влизане">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Забравена Парола?</a>
+    </div>
+    <div id="formFooter">
+      <a class="underlineHover" href="/register">Нямате Регистрация?</a>
+    </div>
+  </div>
+</body>
+</html>
