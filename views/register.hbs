@@ -22,7 +22,7 @@
     <!-- Icon -->
     <div class="fadeIn first">
       <h2 style="font-size: larger;">HealthyFitness</h2> <br>
-      <h2>Регистрация</h2>
+      <h2 style=" text-decoration: underline;">Регистрация</h2>
     </div>
                 {{#if message}}
                 <div class="alert">
@@ -32,10 +32,17 @@
                 {{/if}}
     <!-- Login Form -->
     <form action="/auth/register" method="POST">
+    
       <input type="text" id="email" class="fadeIn second" name="email" placeholder="Емейл">
       <input type="text" id="name" class="fadeIn third" name="name" placeholder="Име и Фамилия">
       <input type="password" id="pass" class="fadeIn second" name="pass" placeholder="Парола">
       <input type="password" id="passSec" class="fadeIn third" name="passSec" placeholder="Потвърди Парола">
+
+      <h2 style="margin-top: 6%; color:rgb(92, 212, 216);">Изберете План</h2><br>
+      <select  class="fadeIn second" name="plan" id="plan">
+        <option style="height: 50px;" value="Безплатен">Безплатен</option>
+        <option style="weight:150% " value="Премиум">Премиум</option>
+      </select><br>
 
       <h2 style=" text-decoration: underline;">Формуляр за клиенти</h2>
       <h6>
