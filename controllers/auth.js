@@ -235,7 +235,7 @@ const register = (req,res) => {
         }, (error,results)=>{
             if(error){console.log(error)}
             else{console.log("u did it!")}
-        })
+        });
 
     });
 }
