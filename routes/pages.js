@@ -27,8 +27,9 @@ router.get('/register',isLoggedIn,(req,res)=>{
 router.get('/dashboard', isLoggedIn ,(req,res)=>{
     if (req.user) {
         const date = convert(req.user.dataOfBirth);
-        console.log(searchResults);
-
+        // searchResults.length = 0;
+        // console.log(timeOfday);
+        // console.log(searchResults);
         res.render('dashboard',{
             user: req.user,
             date: date ,
@@ -37,16 +38,18 @@ router.get('/dashboard', isLoggedIn ,(req,res)=>{
             calculator: currentOpt.calculator,
             calendar: currentOpt.calendar,
             active: 'active',
-            searchedFood: searchResults,    
+            searchedFood: searchResults,
+            timeOfday: timeOfday    
         });
+        
     }else{
         res.redirect('/login')
     }
-})
+})  
 
-router.get('/dashboard/submit', searchedFood ,(req,res)=>{
-    res.redirect('/dashboard')
-});
+router.get('/dashboard/submit',isLoggedIn,(req,res)=>{
+     
+ });
 
 
 
@@ -69,8 +72,8 @@ router.get('/dashboard/submit', searchedFood ,(req,res)=>{
 // fetch date for the foodname and amount 
     router.post('/dashboard/seached', async(req, res) =>{
         
-        // console.log(req.body.net[2]);
-      
+      timeOfday = req.body.net[2];
+    //   console.log(timeOfday);
       searchResults =  await test(req.body.net[0],req.body.net[1]);
       
        
@@ -84,6 +87,7 @@ let currentOpt = {
     calendar: false
 };
 let searchResults = []
+let timeOfday = '';
 
 const  convert = (str) => {
     let date = new Date(str),

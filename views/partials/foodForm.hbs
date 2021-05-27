@@ -51,16 +51,19 @@
                     opacity: 0.8;" type="button" class="btn cancel" onclick="closeForm()">Затвори</button>
                 </form>
                
-    
+                    
 
+                     
                      <div id='loading'>
                        {{#each this.searchedFood}} 
                                 <div style="border: 5px solid red;">
-                                      <form action="/auth//dashboard/submit" method="POST" class="form-container">
+                                      <form action="/auth/dashboard/submit" method="POST" class="form-container">
                                       
                                     {{#each this}} 
                                         <h4>{{this}}</h4><br>
                                     {{/each}} 
+    
+                                     <input type="hidden" name="timeOfday" value="{{../timeOfday}}">
                                     <button style="
                                         height: 80px;
                                         line-height: 80px;  
@@ -72,7 +75,7 @@
                                         color: white;
                                         text-align: center;
                                         cursor: pointer;
-                                        " type="submit" name="pickedFood" value="{{this}}">+</button>
+                                        " type="submit" name="pickedFood" value="{{this}}"> + </button>
                                     </form>
                                 </div>
                          {{/each}}
