@@ -27,13 +27,13 @@ router.get('/register',isLoggedIn,(req,res)=>{
 
 router.get('/dashboard', isLoggedIn , async(req,res)=>{
     if (req.user) {
-       const test =  await accesFoods(req.user.id);
-       console.log(test);
-      
+       let dailyFood =  await accesFoods(req.user.id);
+       
         const date = convert(req.user.dataOfBirth);
         // searchResults.length = 0;
         //     console.log(timeOfday);
         //  console.log(searchResults);
+        setTimeout(function(){ 
         res.render('dashboard',{
             user: req.user,
             date: date ,
@@ -41,10 +41,14 @@ router.get('/dashboard', isLoggedIn , async(req,res)=>{
             profile: currentOpt.profile,
             calculator: currentOpt.calculator,
             calendar: currentOpt.calendar,
-            active: 'active'
-               
+            active: 'active',
+            breakfast: dailyFood.breakfast,
+            lunch: dailyFood.lunch,
+            dinner: dailyFood.dinner,
+            snacks: dailyFood.snacks
+
         });
-        
+    }, 100);
     }else{
         res.redirect('/login')
     }
@@ -58,7 +62,7 @@ router.get('/dashboard/submit',isLoggedIn,(req,res)=>{
     if (req.user) {
         res.render('foodResults',{
             searchedFood: searchResults,
-            timeOfday: timeOfday ,
+            timeOfday: timeOfday,
             userId: req.user.id  
         });
     }else{
@@ -98,8 +102,8 @@ router.get('/dashboard/submit',isLoggedIn,(req,res)=>{
 // Extra functionality
 let currentOpt = { 
     news: false,
-    profile: true,
-    calculator: false,
+    profile: false,
+    calculator: true,
     calendar: false
 };
 let searchResults = []

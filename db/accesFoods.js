@@ -11,7 +11,7 @@ const getUsersFood = async(userID)=>{
  //   console.log(userID);
    const currentDay = new Date().toLocaleDateString();
 
-    db.query('SELECT * FROM breakfast', function(error,results) {
+    db.query('SELECT * FROM breakfast', await function(error,results) {
         if(error){console.log(error)}
         let parsedResult = 0;
         for (let i = 0; i < results.length; i++) {
@@ -23,56 +23,57 @@ const getUsersFood = async(userID)=>{
                 parsedResult.sugars,parsedResult.carbohydrate,
                 parsedResult.calllories
                 );
-                console.log(meals);
            }
-        }  return meals;
+        }  
     });
-    // db.query('SELECT * FROM lunch', await function(error,results) {
-    //     if(error){console.log(error)}
-    //     const parsedResult = JSON.parse(results[0].lunch);
-    //     for (let i = 0; i < results.length; i++) {
-    //        if(results[i].uid ===userID && parsedResult.date ===currentDay){
-    //         meals.lunch.push(
-    //             parsedResult.foodName,parsedResult.protein,
-    //             parsedResult.energy, parsedResult.fat,
-    //             parsedResult.sugars,parsedResult.carbohydrate,
-    //             parsedResult.calllories
-    //             )
-    //        }
+    db.query('SELECT * FROM lunch', await function(error,results) {
+        if(error){console.log(error)}
+        let parsedResult = 0;
+        for (let i = 0; i < results.length; i++) {
+           parsedResult = JSON.parse(results[i].lunch);
+           if(results[i].uid ===userID && parsedResult.date ===currentDay){
+            meals.lunch.push(
+                parsedResult.foodName,parsedResult.protein,
+                parsedResult.energy, parsedResult.fat,
+                parsedResult.sugars,parsedResult.carbohydrate,
+                parsedResult.calllories
+                )
+           }  
+        }
+    });
+    db.query('SELECT * FROM dinner', await function(error,results) {
+        if(error){console.log(error)}
+        let parsedResult = 0;
+        for (let i = 0; i < results.length; i++) {
+           parsedResult = JSON.parse(results[i].dinner);
+           if(results[i].uid ===userID && parsedResult.date ===currentDay){
+            meals.dinner.push(
+                parsedResult.foodName,parsedResult.protein,
+                parsedResult.energy, parsedResult.fat,
+                parsedResult.sugars,parsedResult.carbohydrate,
+                parsedResult.calllories
+                )
+           }
             
-    //     }
-    // });
-    // db.query('SELECT * FROM dinner', await function(error,results) {
-    //     if(error){console.log(error)}
-    //     const parsedResult = JSON.parse(results[0].dinner);
-    //     for (let i = 0; i < results.length; i++) {
-    //        if(results[i].uid ===userID && parsedResult.date ===currentDay){
-    //         meals.dinner.push(
-    //             parsedResult.foodName,parsedResult.protein,
-    //             parsedResult.energy, parsedResult.fat,
-    //             parsedResult.sugars,parsedResult.carbohydrate,
-    //             parsedResult.calllories
-    //             )
-    //        }
+        }
+    });
+    db.query('SELECT * FROM snacks', await function(error,results) {
+        if(error){console.log(error)}
+        let parsedResult = 0;
+        for (let i = 0; i < results.length; i++) {
+            parsedResult = JSON.parse(results[i].snacks);
+           if(results[i].uid ===userID && parsedResult.date ===currentDay){
+            meals.snacks.push(
+                parsedResult.foodName,parsedResult.protein,
+                parsedResult.energy, parsedResult.fat,
+                parsedResult.sugars,parsedResult.carbohydrate,
+                parsedResult.calllories
+                )
+           }
             
-    //     }
-    // });
-    // db.query('SELECT * FROM snacks', await function(error,results) {
-    //     if(error){console.log(error)}
-    //     const parsedResult = JSON.parse(results[0].snacks);
-    //     for (let i = 0; i < results.length; i++) {
-    //        if(results[i].uid ===userID && parsedResult.date ===currentDay){
-    //         meals.snacks.push(
-    //             parsedResult.foodName,parsedResult.protein,
-    //             parsedResult.energy, parsedResult.fat,
-    //             parsedResult.sugars,parsedResult.carbohydrate,
-    //             parsedResult.calllories
-    //             )
-    //        }
-            
-    //     }
-    // });
-   
+        }
+    });
+    return meals;
 };
 
 export default getUsersFood;

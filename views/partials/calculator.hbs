@@ -11,42 +11,67 @@
   color: #00A5F2;	
 }
 	.main-content .panel-wrapper-calc {
-	margin: 20px -20px;
+	margin: 2% -2%;
 }
 
 .main-content .panel-wrapper-calc .panel-head-calc {
 	background-color: #fff;
 	color: #000;
-	padding: 10px 10px;
+	padding: 1% 1%;
 	border-bottom: 1px dashed grey;
 }
 .main-content .panel-wrapper-calc .panel-body-calc {
-	padding: 20px 10px 0px 5px;
+	padding: 2% 1% 0% 1.8%;
 	background-color: #fff;
 	font-size: 80%;
+}
+@media screen and (max-width: 600px) {
+  .foods {
+    font-size: 20px;
+  }
 }
 
 </style>
 <div class="main-content">
 			<h1>{{user.plan}} Калкулатор</h1>
 			<div class="panel-wrapper-calc">
-				<div class="panel-head-calc">
+				<div class="panel-head-calc">	
 					<strong>Закуска</strong>
 				</div>
 				<div class="panel-body-calc">
-                 <button class="add-calc" onClick="reply_click(this.id)"  id="breakfast">Добави храна</button><br>
-                
-                
+                 <button class="add-calc" onClick="reply_click(this.id)"  id="breakfast">Добави храна</button><br>     
+                {{#if breakfast}}      
+                        
+                                      
+                                    {{#each breakfast~}} 
+									{{#nthIteration @index 7}}<br>{{/nthIteration}}
+									{{#nthIteration @index 14}}<br>{{/nthIteration}}
+									{{#nthIteration @index 21}}<br>{{/nthIteration}}
+									{{#nthIteration @index 28}}<br>{{/nthIteration}}
+									{{#nthIteration @index 35}}<br>{{/nthIteration}}
+                                      <h4>{{~this~}}</h4>
+                                    {{/each~}} 
+				{{/if}}
 				</div>
 			</div>
-
+                               
 			<div class="panel-wrapper-calc">
 				<div class="panel-head-calc">
 					<strong>Обяд</strong>
 				</div>
 				<div class="panel-body-calc">
                  <button class="add-calc" onClick="reply_click(this.id)" id="lunch">Добави храна</button><br>
-                
+                {{#if lunch}} 
+
+				                    {{#each lunch~}} 
+									{{#nthIteration @index 7}}<br>{{/nthIteration}}
+									{{#nthIteration @index 14}}<br>{{/nthIteration}}
+									{{#nthIteration @index 21}}<br>{{/nthIteration}}
+									{{#nthIteration @index 28}}<br>{{/nthIteration}}
+									{{#nthIteration @index 35}}<br>{{/nthIteration}}
+                                      <h4>{{~this~}}</h4>
+                                    {{/each~}} 
+				{{/if}}
                  
 				</div>
 			</div>
@@ -58,7 +83,16 @@
 				<div class="panel-body-calc">
                  <button class="add-calc" onClick="reply_click(this.id)" id="dinner">Добави храна</button><br>
                 
-                 
+                 {{#if dinner}}
+				                    {{#each dinner~}} 
+									{{#nthIteration @index 7}}<br>{{/nthIteration}}
+									{{#nthIteration @index 14}}<br>{{/nthIteration}}
+									{{#nthIteration @index 21}}<br>{{/nthIteration}}
+									{{#nthIteration @index 28}}<br>{{/nthIteration}}
+									{{#nthIteration @index 35}}<br>{{/nthIteration}}
+                                      <h4>{{~this~}}</h4>
+                                    {{/each~}} 
+				{{/if}}
 				</div>
 			</div>
 
@@ -68,7 +102,15 @@
 				</div>
 				<div class="panel-body-calc">
                  <button class="add-calc" onClick="reply_click(this.id)" id="snacks">Добави храна</button><br>
-                
+                {{#if snacks}}  
+				                    {{#each snacks~}} 
+									{{#nthIteration @index 7}}<br>{{/nthIteration}}
+									{{#nthIteration @index 14}}<br>{{/nthIteration}}
+									{{#nthIteration @index 21}}<br>{{/nthIteration}}
+									{{#nthIteration @index 28}}<br>{{/nthIteration}}
+									{{#nthIteration @index 35}}<br>{{/nthIteration}}
+                                      <h4>{{~this~}}</h4>
+                                    {{/each~}} {{/if}}
                  {{>foodForm}}
 				</div>
 			</div>

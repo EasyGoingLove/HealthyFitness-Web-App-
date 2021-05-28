@@ -59,9 +59,31 @@ p{
 	text-align: center;
 	cursor: pointer;
 	display: none;
+    cursor: pointer;
 }
 .nav-btn:active {
 	background-color: #090909; 
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
 header {
@@ -250,7 +272,12 @@ header .logo span {
     <header>
 		<div class="logo">Healthy<span>Fitness</span></div>
 	</header>
-	<div class="nav-btn">Menu</div>
+	<div class="nav-btn" onclick="myFunction()">Menu</div>
+	  <div id="myDropdown" class="dropdown-content">
+		<a href="#home">Home</a>
+		<a href="#about">About</a>
+		<a href="#contact">Contact</a>
+	</div>
 	<div class="container">
 		
 		<div class="sidebar"> 
@@ -258,7 +285,7 @@ header .logo span {
 				<a href="/">Healthy<span>Fitness</span></a>
                 <h1>{{user.name}}</h1>
 				<ul>
-					<li id="news" class="rar {{#if news}}{{active}}{{/if}}"> <a class="newsz" href="">Новини</a> </li>
+					<li id="ne0ws" class="rar {{#if news}}{{active}}{{/if}}"> <a class="newsz" href="">Новини</a> </li>
 					<li id="profile" class="rar {{#if profile}}{{active}}{{/if}}"><a class="profile" href="">Профил</a></li>
 					<li id="calculator"class="rar {{#if calculator}}{{active}}{{/if}}"><a class="calculator" href="">Калкулатор</a></li>
 					<li id="calendar"class="rar {{#if calendar}}{{active}}{{/if}}"><a class="calendar" href="">Календар</a></li>
@@ -277,6 +304,23 @@ header .logo span {
 	
 </body>
 <script type="module" src="/scripts/clickedOption.js"></script>
+<script>
 
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+  if (!event.target.matches('.nav-btn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
 
 </html>

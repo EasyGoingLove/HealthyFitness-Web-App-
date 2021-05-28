@@ -30,7 +30,12 @@ hbs.registerPartials(__dirname + '/views/partials', function (err) {});
 app.use(express.static(publicDir));
 app.set('view engine' , 'hbs');
 
-
+hbs.registerHelper('nthIteration', function(index, i, options) {
+    if (index === i) {
+        return options.fn(this);
+    }
+    return options.inverse(this);
+});
 //Parse URl- encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({extended:false}));
 //Parse JSON bodies (as sent by API client)
