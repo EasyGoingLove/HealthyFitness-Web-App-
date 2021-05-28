@@ -1,7 +1,6 @@
 import db from '../db/db.js';
 
 const importSerachedFood = async(req,res,next) => {
-    console.log(req.body);
     const foodData =  await req.body.pickedFood;
     const postcodePrefix = foodData.split(",");
     const letters = /^[A-Za-z]+$/;
@@ -17,6 +16,7 @@ const importSerachedFood = async(req,res,next) => {
         calllories: 0
     };
     const timeOfday = req.body.timeOfday;
+    const userID = req.body.userID;
     
  
     for (let i = 0; i < postcodePrefix.length; i++) {
@@ -33,36 +33,41 @@ const importSerachedFood = async(req,res,next) => {
             break;  
         }
     }
-    console.log(arrangedFood);
     res.redirect('/dashboard');
+
+    const food = JSON.stringify(arrangedFood);
+    console.log(food);
+    
+    
     
          if(timeOfday === 'breakfast'){
-            db.query('INSERT INTO basicusers SET ?', {
-                breakfast:foodData 
+            
+            db.query('INSERT INTO breakfast SET ?',{
+                uid:userID , breakfast:food
             }, (error,results)=>{
                 if(error){console.log(error)}
                 else{console.log("u did it!")}
             });
           }
          if (timeOfday === 'lunch'){
-            db.query('INSERT INTO basicusers SET ?', {
-                lunch:foodData 
+            db.query('INSERT INTO lunch SET ?', {
+                uid:userID , lunch:food
             }, (error,results)=>{
                 if(error){console.log(error)}
                 else{console.log("u did it!")}
             });
          } 
          if (timeOfday === 'dinner'){
-            db.query('INSERT INTO basicusers SET ?', {
-                dinner:foodData 
+            db.query('INSERT INTO dinner SET ?', {
+                uid:userID , dinner:food
             }, (error,results)=>{
                 if(error){console.log(error)}
                 else{console.log("u did it!")}
             });
         } 
         if (timeOfday === 'snacks'){
-            db.query('INSERT INTO basicusers SET ?', {
-                snacks:foodData 
+            db.query('INSERT INTO snacks SET ?', {
+                uid:userID , snacks:food
             }, (error,results)=>{
                 if(error){console.log(error)}
                 else{console.log("u did it!")}

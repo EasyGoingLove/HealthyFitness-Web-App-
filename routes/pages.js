@@ -2,6 +2,7 @@ import express from 'express';
 import isLoggedIn from '../controllers/authPrivete.js';
 import test from '../FoodApi/app.js';
 import searchedFood from '../controllers/authSearchedFood.js';
+import accesFoods from '../db/accesFoods.js';
 
 const router = express.Router();
 
@@ -24,12 +25,15 @@ router.get('/register',isLoggedIn,(req,res)=>{
     }
 })
 
-router.get('/dashboard', isLoggedIn ,(req,res)=>{
+router.get('/dashboard', isLoggedIn , async(req,res)=>{
     if (req.user) {
+       const test =  await accesFoods(req.user.id);
+       console.log(test);
+      
         const date = convert(req.user.dataOfBirth);
         // searchResults.length = 0;
-        // console.log(timeOfday);
-        // console.log(searchResults);
+        //     console.log(timeOfday);
+        //  console.log(searchResults);
         res.render('dashboard',{
             user: req.user,
             date: date ,
@@ -37,9 +41,8 @@ router.get('/dashboard', isLoggedIn ,(req,res)=>{
             profile: currentOpt.profile,
             calculator: currentOpt.calculator,
             calendar: currentOpt.calendar,
-            active: 'active',
-            searchedFood: searchResults,
-            timeOfday: timeOfday    
+            active: 'active'
+               
         });
         
     }else{
@@ -50,6 +53,19 @@ router.get('/dashboard', isLoggedIn ,(req,res)=>{
 router.get('/dashboard/submit',isLoggedIn,(req,res)=>{
      
  });
+
+ router.get('/dashboard/foodResults',isLoggedIn,(req,res)=>{
+    if (req.user) {
+        res.render('foodResults',{
+            searchedFood: searchResults,
+            timeOfday: timeOfday ,
+            userId: req.user.id  
+        });
+    }else{
+        res.redirect('/login');
+    }
+    
+});
 
 
 

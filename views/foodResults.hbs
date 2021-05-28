@@ -1,0 +1,29 @@
+
+                     <div id='loading'>
+                       {{#each this.searchedFood}} 
+                                <div style="border: 5px solid red;">
+                                      <form action="/auth/dashboard/submit" method="POST" class="form-container">
+                                      
+                                    {{#each this}} 
+                                        <h4>{{this}}</h4><br>
+                                    {{/each}} 
+    
+                                     <input type="hidden" name="timeOfday" value="{{../timeOfday}}">
+                                     <input type="hidden" name="userID" value="{{../userId}}">
+                                    <button style="
+                                        height: 80px;
+                                        line-height: 80px;  
+                                        width: 80px;  
+                                        font-size: 2em;
+                                        font-weight: bold;
+                                        border-radius: 50%;
+                                        background-color: #4CAF50;
+                                        color: white;
+                                        text-align: center;
+                                        cursor: pointer;
+                                        " type="submit" name="pickedFood" value="{{this}}"> + </button>
+                                    </form>
+                                </div>
+                         {{/each}}
+                      </div>
+                      

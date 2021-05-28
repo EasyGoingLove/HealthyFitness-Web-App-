@@ -11,6 +11,8 @@ btn.addEventListener("click", (e) => {
     searchedFoodInf.length = 0;
     searchedFoodInf.push(foodNameInput.value ,foodAmountInput.value,id);
     serchedFood();
+    setTimeout(function(){location.href = "/dashboard/foodResults";  }, 1000);
+    
     }
     else if (!foodNameInput.value && !foodAmountInput.value){
       alert("Моля попълнете всички полета преди да продължите.");
