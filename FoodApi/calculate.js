@@ -12,10 +12,10 @@ export default class Calculate {
         let newArray = new Array();
         let percentageDifference = this.foodAmountInput / 100;
         newArray = [
-          this.nutritionData.foodName[i] , (this.nutritionData.protein[i]*percentageDifference).toFixed(2),
-          (this.nutritionData.energy[i]*percentageDifference).toFixed(2), (this.nutritionData.fat[i]*percentageDifference).toFixed(2),
-          (this.nutritionData.sugars[i]*percentageDifference).toFixed(2), (this.nutritionData.carbohydrate[i]*percentageDifference).toFixed(2),
-          (this.nutritionData.calllories[i]*percentageDifference).toFixed(2)
+          this.nutritionData.foodName[i] , (Math.round(this.nutritionData.protein[i]*percentageDifference)),
+          (Math.round(this.nutritionData.energy[i]*percentageDifference)), (Math.round(this.nutritionData.fat[i]*percentageDifference)),
+          (Math.round(this.nutritionData.sugars[i]*percentageDifference)), (Math.round(this.nutritionData.carbohydrate[i]*percentageDifference)),
+          (Math.round(this.nutritionData.calllories[i]*percentageDifference))
            ]; // just example values
            this.searchedFoodResults.push(newArray);      
      }

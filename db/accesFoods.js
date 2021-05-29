@@ -18,9 +18,8 @@ const getUsersFood = async(userID)=>{
             parsedResult = JSON.parse(results[i].breakfast);
            if(results[i].uid === userID && parsedResult.date ===currentDay){
             meals.breakfast.push(
-                parsedResult.foodName,parsedResult.protein,
-                parsedResult.energy, parsedResult.fat,
-                parsedResult.sugars,parsedResult.carbohydrate,
+                parsedResult.foodName,parsedResult.protein
+                ,parsedResult.fat,parsedResult.carbohydrate,
                 parsedResult.calllories
                 );
            }
@@ -33,9 +32,8 @@ const getUsersFood = async(userID)=>{
            parsedResult = JSON.parse(results[i].lunch);
            if(results[i].uid ===userID && parsedResult.date ===currentDay){
             meals.lunch.push(
-                parsedResult.foodName,parsedResult.protein,
-                parsedResult.energy, parsedResult.fat,
-                parsedResult.sugars,parsedResult.carbohydrate,
+                parsedResult.foodName,parsedResult.protein
+                ,parsedResult.fat,parsedResult.carbohydrate,
                 parsedResult.calllories
                 )
            }  
@@ -48,9 +46,8 @@ const getUsersFood = async(userID)=>{
            parsedResult = JSON.parse(results[i].dinner);
            if(results[i].uid ===userID && parsedResult.date ===currentDay){
             meals.dinner.push(
-                parsedResult.foodName,parsedResult.protein,
-                parsedResult.energy, parsedResult.fat,
-                parsedResult.sugars,parsedResult.carbohydrate,
+                parsedResult.foodName,parsedResult.protein
+                ,parsedResult.fat,parsedResult.carbohydrate,
                 parsedResult.calllories
                 )
            }
@@ -64,9 +61,8 @@ const getUsersFood = async(userID)=>{
             parsedResult = JSON.parse(results[i].snacks);
            if(results[i].uid ===userID && parsedResult.date ===currentDay){
             meals.snacks.push(
-                parsedResult.foodName,parsedResult.protein,
-                parsedResult.energy, parsedResult.fat,
-                parsedResult.sugars,parsedResult.carbohydrate,
+                parsedResult.foodName,parsedResult.protein
+                ,parsedResult.fat,parsedResult.carbohydrate,
                 parsedResult.calllories
                 )
            }

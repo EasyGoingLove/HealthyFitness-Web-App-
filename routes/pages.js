@@ -34,6 +34,7 @@ router.get('/dashboard', isLoggedIn , async(req,res)=>{
         //     console.log(timeOfday);
         //  console.log(searchResults);
         setTimeout(function(){ 
+            console.log(dailyFood.breakfast);
         res.render('dashboard',{
             user: req.user,
             date: date ,

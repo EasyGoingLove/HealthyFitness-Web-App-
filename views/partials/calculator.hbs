@@ -30,87 +30,222 @@
     font-size: 20px;
   }
 }
+.column {
+  float: left;
+  width: 15%;
+   max-height: 36px; /* Should be removed. Only for demonstration */
+}
+.columnp {
+  float: left;
+  width: 15%;
+  margin-left: 3.5%;
+  max-height: 36px; /* Should be removed. Only for demonstration */
+}
+.scolumn {
+  float: left;
+  width: 40%;
+  padding: 10px;
+  max-height: 36px; /* Should be removed. Only for demonstration */
+}
+.scolumn1 {
+  float: left;
+  width: 5%;
+  padding-top: 0.7%;
+  max-height: 36px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+td{
+	border: 1px solid #ddd;
+}
+td:nth-child(1){
+   width: 40em;
+}
+td:nth-child(2),td:nth-child(3),td:nth-child(4),td:nth-child(5){
+	width: 15em;
+}
 
 </style>
 <div class="main-content">
 			<h1>{{user.plan}} Калкулатор</h1>
 			<div class="panel-wrapper-calc">
 				<div class="panel-head-calc">	
-					<strong>Закуска</strong>
+					
+					<div class="row">
+						    <div class="scolumn" >
+								<strong>Закуска</strong>
+							</div>
+							<div class="column" >
+								<img style="max-height:36px;" src="/extra/carbs.png">
+							</div>
+							<div class="column" >
+								<img style="max-height:36px; " src="/extra/fats.png">
+							</div>
+							<div class="columnp" >
+								<img style="max-height:36px; " src="/extra/protein.png">
+							</div>
+							<div class="scolumn1" >
+								<strong>kCal</strong>
+							</div>
+							</div>
+					
 				</div>
-				<div class="panel-body-calc">
-                 <button class="add-calc" onClick="reply_click(this.id)"  id="breakfast">Добави храна</button><br>     
+				<div class="panel-body-calc">    
                 {{#if breakfast}}      
-                        
+                         <table >
+							
+								<tr style="padding-bottom: 1em;">
                                       
                                     {{#each breakfast~}} 
-									{{#nthIteration @index 7}}<br>{{/nthIteration}}
-									{{#nthIteration @index 14}}<br>{{/nthIteration}}
-									{{#nthIteration @index 21}}<br>{{/nthIteration}}
-									{{#nthIteration @index 28}}<br>{{/nthIteration}}
-									{{#nthIteration @index 35}}<br>{{/nthIteration}}
-                                      <h4>{{~this~}}</h4>
-                                    {{/each~}} 
-				{{/if}}
+									
+
+								    {{#nthIteration @index 5}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 10}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 15}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 20}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 25}}</tr>{{/nthIteration}}
+                                   <td ><h4 >{{this}}</h4></td>
+                                    {{/each~}}
+									</tr>
+									</table>
+				{{/if}} <br>
+			   <button class="add-calc" onClick="reply_click(this.id)"  id="breakfast">Добави храна</button><br> 
 				</div>
 			</div>
                                
 			<div class="panel-wrapper-calc">
 				<div class="panel-head-calc">
-					<strong>Обяд</strong>
+					
+						<div class="row">
+						    <div class="scolumn" >
+								<strong>Обяд</strong>
+							</div>
+							<div class="column" >
+								<img style="max-height:36px;" src="/extra/carbs.png">
+							</div>
+							<div class="column" >
+								<img style="max-height:36px; " src="/extra/fats.png">
+							</div>
+							<div class="columnp" >
+								<img style="max-height:36px; " src="/extra/protein.png">
+							</div>
+							<div class="scolumn1" >
+								<strong>kCal</strong>
+							</div>
+							</div>
+					
 				</div>
 				<div class="panel-body-calc">
+                 {{#if lunch}}      
+                         <table>
+							
+								<tr style="padding-bottom: 1em;">
+                                      
+                                    {{#each lunch~}} 
+								      {{#nthIteration @index 5}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 10}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 15}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 20}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 25}}</tr>{{/nthIteration}}
+                                   <td> <h4>{{this}}</h4></td>
+                                    {{/each~}}
+									</tr>
+									</table>
+				{{/if}} <br>
                  <button class="add-calc" onClick="reply_click(this.id)" id="lunch">Добави храна</button><br>
-                {{#if lunch}} 
-
-				                    {{#each lunch~}} 
-									{{#nthIteration @index 7}}<br>{{/nthIteration}}
-									{{#nthIteration @index 14}}<br>{{/nthIteration}}
-									{{#nthIteration @index 21}}<br>{{/nthIteration}}
-									{{#nthIteration @index 28}}<br>{{/nthIteration}}
-									{{#nthIteration @index 35}}<br>{{/nthIteration}}
-                                      <h4>{{~this~}}</h4>
-                                    {{/each~}} 
-				{{/if}}
-                 
 				</div>
 			</div>
 
 				<div class="panel-wrapper-calc">
 				<div class="panel-head-calc">
-					<strong>Вечеря</strong>
+					
+						<div class="row">
+						    <div class="scolumn" >
+								<strong>Вечеря</strong>
+							</div>
+							<div class="column" >
+								<img style="max-height:36px;" src="/extra/carbs.png">
+							</div>
+							<div class="column" >
+								<img style="max-height:36px; " src="/extra/fats.png">
+							</div>
+							<div class="columnp" >
+								<img style="max-height:36px; " src="/extra/protein.png">
+							</div>
+							<div class="scolumn1" >
+								<strong>kCal</strong>
+							</div>
+							</div>
+					
 				</div>
 				<div class="panel-body-calc">
-                 <button class="add-calc" onClick="reply_click(this.id)" id="dinner">Добави храна</button><br>
+               
                 
-                 {{#if dinner}}
-				                    {{#each dinner~}} 
-									{{#nthIteration @index 7}}<br>{{/nthIteration}}
-									{{#nthIteration @index 14}}<br>{{/nthIteration}}
-									{{#nthIteration @index 21}}<br>{{/nthIteration}}
-									{{#nthIteration @index 28}}<br>{{/nthIteration}}
-									{{#nthIteration @index 35}}<br>{{/nthIteration}}
-                                      <h4>{{~this~}}</h4>
-                                    {{/each~}} 
-				{{/if}}
+                 {{#if dinner}}      
+                          <table >
+							
+								<tr style="padding-bottom: 1em;">
+                                      
+                                    {{#each dinner~}} 
+								      {{#nthIteration @index 5}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 10}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 15}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 20}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 25}}</tr>{{/nthIteration}}
+                                   <td> <h4>{{this}}</h4></td>
+                                    {{/each~}}
+									</tr>
+									</table>
+				{{/if}} <br>
+				  <button class="add-calc" onClick="reply_click(this.id)" id="dinner">Добави храна</button><br>
 				</div>
 			</div>
 
 				<div class="panel-wrapper-calc">
 				<div class="panel-head-calc">
-					<strong>Снакс</strong>
+					
+						<div class="row">
+						    <div class="scolumn" >
+								<strong>Снакс</strong>
+							</div>
+							<div class="column" >
+								<img style="max-height:36px;" src="/extra/carbs.png">
+							</div>
+							<div class="column" >
+								<img style="max-height:36px; " src="/extra/fats.png">
+							</div>
+							<div class="columnp" >
+								<img style="max-height:36px; " src="/extra/protein.png">
+							</div>
+							<div class="scolumn1" >
+								<strong>kCal</strong>
+							</div>
+							</div>
 				</div>
 				<div class="panel-body-calc">
-                 <button class="add-calc" onClick="reply_click(this.id)" id="snacks">Добави храна</button><br>
-                {{#if snacks}}  
-				                    {{#each snacks~}} 
-									{{#nthIteration @index 7}}<br>{{/nthIteration}}
-									{{#nthIteration @index 14}}<br>{{/nthIteration}}
-									{{#nthIteration @index 21}}<br>{{/nthIteration}}
-									{{#nthIteration @index 28}}<br>{{/nthIteration}}
-									{{#nthIteration @index 35}}<br>{{/nthIteration}}
-                                      <h4>{{~this~}}</h4>
-                                    {{/each~}} {{/if}}
+                
+                {{#if snacks}}      
+                         <table >
+							
+								<tr style="padding-bottom: 1em;">
+                                      
+                                    {{#each snacks~}} 
+								      {{#nthIteration @index 5}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 10}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 15}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 20}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 25}}</tr>{{/nthIteration}}
+                                   <td> <h4>{{this}}</h4></td>
+                                    {{/each~}}
+									</tr>
+									</table>
+				{{/if}} <br>
+				 <button class="add-calc" onClick="reply_click(this.id)" id="snacks">Добави храна</button><br>
                  {{>foodForm}}
 				</div>
 			</div>

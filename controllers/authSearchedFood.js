@@ -9,9 +9,7 @@ const importSerachedFood = async(req,res,next) => {
         date: new Date().toLocaleDateString(),
         foodName: '',
         protein: 0,
-        energy: 0,
         fat: 0,
-        sugars: 0,
         carbohydrate: 0,
         calllories: 0
     };
@@ -25,11 +23,9 @@ const importSerachedFood = async(req,res,next) => {
         }
     else {
             arrangedFood.protein = postcodePrefix[i];
-            arrangedFood.energy = postcodePrefix[i+1];
-            arrangedFood.fat = postcodePrefix[i+2];
-            arrangedFood.sugars = postcodePrefix[i+3];
-            arrangedFood.carbohydrate = postcodePrefix[i+4];
-            arrangedFood.calllories = postcodePrefix[i+5]; 
+            arrangedFood.fat = postcodePrefix[i+1];
+            arrangedFood.carbohydrate = postcodePrefix[i+2];
+            arrangedFood.calllories = postcodePrefix[i+3]; 
             break;  
         }
     }
