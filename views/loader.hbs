@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -364,7 +365,8 @@ td:nth-child(5){
 		<div class="sidebar"> 
 			<nav>
 				<a href="/">Healthy<span>Fitness</span></a>
-                <h1>{{user.name}}</h1>
+                <h1>{{./user.name}}</h1>
+				  {{user.id}}
 				<ul>
 					<li id="ne0ws" class="rar"> <a class="newsz" href="/dashboard">Новини</a> </li>
 					<li id="profile" class="rar "><a class="profile" href="/dashboard">Профил</a></li>
@@ -375,62 +377,13 @@ td:nth-child(5){
 			</nav>
 			
 		</div>
-     <div id="thisdiv">
-         	<div class="main-content">
-                <div class="panel-head-calc" style="background-color: rgb(255, 255, 255);">
-                    		<div class="row">
-						    <div class="scolumn" >
-								<strong>Храна</strong>
-							</div>
-							<div class="column" >
-								<img style="max-height:36px;" src="/extra/carbs.png">
-							</div>
-							<div class="column" >
-								<img style="max-height:36px; " src="/extra/fats.png">
-							</div>
-							<div class="columnp" >
-								<img style="max-height:36px; " src="/extra/protein.png">
-							</div>
-							<div class="scolumn1" >
-								<strong>kCal</strong>
-							</div>
-							</div>
-					
-				</div><br><br>
-                            {{#each this.searchedFood}} 
-                                        <div  >
-                                            <form  action="/auth/dashboard/submit" method="POST" class="form-container">
-                                            <table >
-                                             <tr style="padding-bottom: 1em;">
-                                             {{#each this}} 
-                                          
-
-                                             <td ><h4>{{this}}</h4></td>
-                                            {{/each}}
-                                            </tr>
-                                            </table>
-
-            
-                                            <input type="hidden" name="timeOfday" value="{{../timeOfday}}">
-                                            <input type="hidden" name="userID" value="{{../userId}}">
-                                            <button style="
-                                                height: 1em;
-                                                width: 100%; 
-                                                font-size: 2em;
-                                                background-color: #cefdc8f8;
-                                                color: rgb(107, 238, 81);
-                                                text-align: center;
-                                                cursor: pointer;
-                                                margin: auto;
-                                                border-color:white;
-                                                " type="submit" name="pickedFood" value="{{this}}">+</button><br><br>
-                                            </form>
-                                        </div>
-                                {{/each}}
+     
+         	<div class="main-content" >
+            <center><img style="margin-top: 20%;" src="/extra/spinning-loader.gif" alt=""></center>
                             </div>
             </div>
     
-	</div>
+    
 	
 	
 </body>

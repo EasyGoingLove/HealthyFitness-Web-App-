@@ -23,7 +23,14 @@ router.get('/register',isLoggedIn,(req,res)=>{
     }else{  
         res.render('register');
     }
-})
+});
+
+router.get('/loader',isLoggedIn,(req,res)=>{
+
+    console.log(req.body,2131);
+    res.redirect('/dashboard');
+    
+});
 
 router.get('/dashboard', isLoggedIn , async(req,res)=>{
     if (req.user) {
@@ -34,7 +41,6 @@ router.get('/dashboard', isLoggedIn , async(req,res)=>{
         //     console.log(timeOfday);
         //  console.log(searchResults);
         setTimeout(function(){ 
-            console.log(dailyFood.breakfast);
         res.render('dashboard',{
             user: req.user,
             date: date ,
@@ -55,9 +61,9 @@ router.get('/dashboard', isLoggedIn , async(req,res)=>{
     }
 })  
 
-router.get('/dashboard/submit',isLoggedIn,(req,res)=>{
+// router.get('/dashboard/submit',isLoggedIn,(req,res)=>{
      
- });
+//  });
 
  router.get('/dashboard/foodResults',isLoggedIn,(req,res)=>{
     if (req.user) {

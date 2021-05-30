@@ -5,6 +5,7 @@ import authControllerDashboard from '../controllers/authPrivete.js';
 import authControllerLogOut from '../controllers/authLogOut.js';
 import authSearchedFood from '../controllers/authSearchedFood.js';
 import authFoodRes from '../controllers/authFoodRes.js';
+import authDate from '../controllers/authDate.js';
 
 
 
@@ -19,6 +20,9 @@ router.post('/dashboard', authControllerDashboard);
 router.post('/dashboard/submit', authSearchedFood);
 
 router.get('/dashboard/foodResults',authFoodRes);
+
+router.post('/loader',authDate);
+
 
 router.get('/logout',authControllerLogOut);
 
