@@ -1,6 +1,6 @@
 import express from 'express';
 import isLoggedIn from '../controllers/authPrivete.js';
-import test from '../FoodApi/app.js';
+import api from '../FoodApi/app.js';
 import searchedFood from '../controllers/authSearchedFood.js';
 import accesFoods from '../db/accesFoods.js';
 
@@ -61,11 +61,12 @@ router.get('/dashboard/submit',isLoggedIn,(req,res)=>{
 
  router.get('/dashboard/foodResults',isLoggedIn,(req,res)=>{
     if (req.user) {
+        setTimeout(function(){ 
         res.render('foodResults',{
             searchedFood: searchResults,
             timeOfday: timeOfday,
             userId: req.user.id  
-        });
+        }); }, 100);
     }else{
         res.redirect('/login');
     }
@@ -95,9 +96,7 @@ router.get('/dashboard/submit',isLoggedIn,(req,res)=>{
         
       timeOfday = req.body.net[2];
     //   console.log(timeOfday);
-      searchResults =  await test(req.body.net[0],req.body.net[1]);
-      
-       
+      searchResults =  await api(req.body.net[0],req.body.net[1]);
     });
 
 // Extra functionality

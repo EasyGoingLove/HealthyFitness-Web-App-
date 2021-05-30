@@ -1,29 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>@import 'https://fonts.googleapis.com/css?family=Lato:300,400';
 
-                     <div id='loading'>
-                       {{#each this.searchedFood}} 
-                                <div style="border: 5px solid red;">
-                                      <form action="/auth/dashboard/submit" method="POST" class="form-container">
-                                      
-                                    {{#each this}} 
-                                        <h4>{{this}}</h4><br>
-                                    {{/each}} 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body, html {
+	font-family: 'Lato', sans-serif;
+	font-size: 20px;
+	height: 100%;
+	position: relative;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+a {
+	color: #fff;
+	text-decoration: none; 
+}
+
+p{
+	margin-bottom: 1%;
+	border-bottom: #16a085 solid 1px;
+}
+.add{
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #03a86c;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  color: whitesmoke;
+	
+}
+.add:hover {
+  background-color: rgb(94, 238, 81);
+  color: black;
+}
+.nav-btn {
+	width: 100%;
+	height: 35px;
+	padding-top: 4px;
+	color: #D5D3D3;
+	background-color: #212121;			 ;
+	text-align: center;
+	cursor: pointer;
+	display: none;
+    cursor: pointer;
+}
+.nav-btn:active {
+	background-color: #090909; 
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+header {
+	height: 50px;
+	width: 100%;
+	background-color: #274C6B;
+	display: none;
+}
+
+header .logo {
+	opacity: 0.9;
+	font-size: 120%;
+	padding-top: 9px;
+	padding-left: 8px;
+	color: #fff;
+}
+header .logo span {
+	font-weight: 300;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.sidebar {
+	width: 250px;
+	background-color: #2f3030;
+	position: fixed;
+	top: 0px;
+	left: 0;
+	bottom: 0;
+	box-shadow: 1px 0px 10px #777;
+}
+
+.sidebar nav > a {
+	font-size: 150%;
+	display: inline-block;
+	padding: 30px 0px;
+	padding-left: 30px;
+	opacity: 0.7;
+	transition: all 0.2s;
+}
+.sidebar nav > a:hover {
+	opacity: 1;
+}
+
+.sidebar nav a span {
+	font-weight: 300;
+}
+
+.sidebar nav ul {
+	list-style: none;
+}
+
+.sidebar nav ul li {
+	font-size: 70%;
+	padding: 19px 0;	
+	padding-left: 20px;
+	border-bottom: 0.5px solid #111;
+}
+
+.sidebar nav ul li:nth-child(1):hover {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(1).active {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(2):hover {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(2).active {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(3):hover {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(3).active {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(4):hover {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(4).active {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(5):hover {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li:nth-child(5).active {
+	background-color: #f1c40f;
+}
+
+
+.sidebar nav ul li a {
+	color: #D7D5D5;
+}
+
+.sidebar nav ul li:hover a{
+	color: #fff;
+}
+
+.main-content {
+	background-color: #fafafa;
+	width: calc(100% - 250px);
+	height: 100%;
+	margin-left: 250px;
+	padding: 20px 30px;
+}
+.main-content .panel-wrapper {
+	margin: 20px 0;
+	box-shadow: 0px 1px 5px #777;
+}
+
+.main-content .panel-wrapper .panel-head {
+	background-color: #00A5F2;
+	color: #fff;
+	padding: 10px 10px;
+	border: 1px solid #00A5F2;
+}
+.main-content .panel-wrapper .panel-body {
+	padding: 20px 10px;
+	font-size: 80%;
+}
+
+@media only screen and (max-width: 420px){
+	header {
+		display: block;
+	}
+	.nav-btn {
+		display: block;
+	}
+	.sidebar {
+		position: relative;
+		height: 378px;
+		width: 100%;
+		display: none;
+		margin-bottom: 40px;
+		z-index: 1000;
+	}
+	.main-content {
+		width: 100%;
+		margin-left: 0;
+		z-index: -1;
+		position: relative;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	header {
+		display: block;
+	}
+	.nav-btn {
+		display: block;
+	}
+	.sidebar {
+		position: relative;
+		height: 378px;
+		width: 100%;
+		display: none;
+		margin-bottom: 40px;
+		z-index: 1000;
+	}
+	.main-content {
+		width: 100%;
+		margin-left: 0;
+		z-index: -1;
+		position: relative;
+	}
+
+
+}
+.add-calc{
+  display: block;
+  width: 100%;
+  border: none;
+  text-transform: uppercase;
+  background-color: transparent;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: left;
+  color: #00A5F2;	
+}
+	.main-content .panel-wrapper-calc {
+	margin: 2% -2%;
+}
+
+.main-content .panel-wrapper-calc .panel-head-calc {
+	background-color: #fff;
+	color: #000;
+	padding: 1% 1%;
+	border-bottom: 1px dashed grey;
+}
+.main-content .panel-wrapper-calc .panel-body-calc {
+	padding: 2% 1% 0% 1.8%;
+	background-color: #fff;
+	font-size: 80%;
+}
+@media screen and (max-width: 600px) {
+  .foods {
+    font-size: 20px;
+  }
+}
+.column {
+  float: left;
+  width: 15%;
+   max-height: 36px; /* Should be removed. Only for demonstration */
+}
+.columnp {
+  float: left;
+  width: 15%;
+  margin-left: 3.5%;
+  max-height: 36px; /* Should be removed. Only for demonstration */
+}
+.scolumn {
+  float: left;
+  width: 40%;
+  padding: 10px;
+  max-height: 36px; /* Should be removed. Only for demonstration */
+}
+.scolumn1 {
+  float: left;
+  width: 5%;
+  padding-top: 0.7%;
+  max-height: 36px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+td{
+    background-color: #b3e7af;
+}
+td:nth-child(1){
+   width: 37em;
+}
+td:nth-child(2){
+   width: 16em;
+}
+td:nth-child(3){
+   width: 18em;
+}
+
+td:nth-child(4){
+	width: 14em;
+}
+td:nth-child(5){
+	width: 10em;
+}
+</style>
+</head>
+<body>
+	
+    <header>
+		<div class="logo">Healthy<span>Fitness</span></div>
+	</header>
+	<div class="nav-btn" onclick="myFunction()">Menu</div>
+	  <div id="myDropdown" class="dropdown-content">
+		<a href="#home">Home</a>
+		<a href="#about">About</a>
+		<a href="#contact">Contact</a>
+	</div>
+	<div class="container">
+		
+		<div class="sidebar"> 
+			<nav>
+				<a href="/">Healthy<span>Fitness</span></a>
+                <h1>{{user.name}}</h1>
+				<ul>
+					<li id="ne0ws" class="rar"> <a class="newsz" href="/dashboard">Новини</a> </li>
+					<li id="profile" class="rar "><a class="profile" href="/dashboard">Профил</a></li>
+					<li id="calculator"class="rar active"><a class="calculator"href="/dashboard">Калкулатор</a></li>
+					<li id="calendar"class="rar"><a class="calendar" href="/dashboard">Календар</a></li>
+					<li><a href="/auth/logout">Излизане</a></li>
+				</ul>
+			</nav>
+			
+		</div>
+     <div id="thisdiv">
+         	<div class="main-content">
+                <div class="panel-head-calc" style="background-color: rgb(99, 233, 117);">
+                    		<div class="row">
+						    <div class="scolumn" >
+								<strong>Храна</strong>
+							</div>
+							<div class="column" >
+								<img style="max-height:36px;" src="/extra/carbs.png">
+							</div>
+							<div class="column" >
+								<img style="max-height:36px; " src="/extra/fats.png">
+							</div>
+							<div class="columnp" >
+								<img style="max-height:36px; " src="/extra/protein.png">
+							</div>
+							<div class="scolumn1" >
+								<strong>kCal</strong>
+							</div>
+							</div>
+					
+				</div><br><br>
+                            {{#each this.searchedFood}} 
+                                        <div >
+                                            <form action="/auth/dashboard/submit" method="POST" class="form-container">
+                                            <table >
+                                             <tr style="padding-bottom: 1em;">
+                                             {{#each this}} 
+                                          
+
+                                             <td ><h4>{{this}}</h4></td>
+                                            {{/each}}
+                                            </tr>
+                                            </table>
+
+            
+                                            <input type="hidden" name="timeOfday" value="{{../timeOfday}}">
+                                            <input type="hidden" name="userID" value="{{../userId}}">
+                                            <button style="
+                                                height: 1em;
+                                                width: 100%; 
+                                                font-size: 2em;
+                                                background-color: #cefdc8f8;
+                                                color: rgb(107, 238, 81);
+                                                text-align: center;
+                                                cursor: pointer;
+                                                margin: auto;
+                                                border-color:white;
+                                                " type="submit" name="pickedFood" value="{{this}}">+</button><br><br>
+                                            </form>
+                                        </div>
+                                {{/each}}
+                            </div>
+            </div>
     
-                                     <input type="hidden" name="timeOfday" value="{{../timeOfday}}">
-                                     <input type="hidden" name="userID" value="{{../userId}}">
-                                    <button style="
-                                        height: 80px;
-                                        line-height: 80px;  
-                                        width: 80px;  
-                                        font-size: 2em;
-                                        font-weight: bold;
-                                        border-radius: 50%;
-                                        background-color: #4CAF50;
-                                        color: white;
-                                        text-align: center;
-                                        cursor: pointer;
-                                        " type="submit" name="pickedFood" value="{{this}}"> + </button>
-                                    </form>
-                                </div>
-                         {{/each}}
-                      </div>
-                      
+	</div>
+	
+	
+</body>
+<script type="module" src="/scripts/clickedOption.js"></script>
+<script>
+
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+  if (!event.target.matches('.nav-btn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+</html>
+                
