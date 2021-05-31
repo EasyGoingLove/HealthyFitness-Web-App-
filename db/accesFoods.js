@@ -5,11 +5,20 @@ const getUsersFood = async(userID)=>{
         breakfast: [],
         lunch: [],
         dinner: [],
-        snacks:[]
+        snacks:[],
+
+        protein:0,
+        fat:0,
+        carbohydrate:0,
+        calllories:0,
+        goal:0,
+        difference:0
     };
     const br = [1,2,3];
  //   console.log(userID);
    const currentDay = new Date().toLocaleDateString();
+
+
 
     db.query('SELECT * FROM breakfast', await function(error,results) {
         if(error){console.log(error)}
@@ -22,6 +31,10 @@ const getUsersFood = async(userID)=>{
                 ,parsedResult.fat,parsedResult.carbohydrate,
                 parsedResult.calllories
                 );
+            meals.protein +=  parseInt(parsedResult.protein);
+            meals.fat +=  parseInt(parsedResult.fat);
+            meals.carbohydrate +=  parseInt(parsedResult.carbohydrate);
+            meals.calllories +=  parseInt(parsedResult.calllories);
            }
         }  
     });
@@ -35,7 +48,11 @@ const getUsersFood = async(userID)=>{
                 parsedResult.foodName,parsedResult.protein
                 ,parsedResult.fat,parsedResult.carbohydrate,
                 parsedResult.calllories
-                )
+                );
+            meals.protein +=  parseInt(parsedResult.protein);
+            meals.fat +=  parseInt(parsedResult.fat);
+            meals.carbohydrate +=  parseInt(parsedResult.carbohydrate);
+            meals.calllories +=  parseInt(parsedResult.calllories);
            }  
         }
     });
@@ -49,7 +66,11 @@ const getUsersFood = async(userID)=>{
                 parsedResult.foodName,parsedResult.protein
                 ,parsedResult.fat,parsedResult.carbohydrate,
                 parsedResult.calllories
-                )
+                );
+            meals.protein +=  parseInt(parsedResult.protein);
+            meals.fat +=  parseInt(parsedResult.fat);
+            meals.carbohydrate +=  parseInt(parsedResult.carbohydrate);
+            meals.calllories +=  parseInt(parsedResult.calllories);
            }
             
         }
@@ -64,10 +85,23 @@ const getUsersFood = async(userID)=>{
                 parsedResult.foodName,parsedResult.protein
                 ,parsedResult.fat,parsedResult.carbohydrate,
                 parsedResult.calllories
-                )
+                );
+            meals.protein +=  parseInt(parsedResult.protein);
+            meals.fat +=  parseInt(parsedResult.fat);
+            meals.carbohydrate +=  parseInt(parsedResult.carbohydrate);
+            meals.calllories +=  parseInt(parsedResult.calllories);
            }
             
         }
+    });
+    db.query('SELECT * FROM celnapotrbitelq', await function(error,results) {
+            if(error){console.log(error)}
+            for (let i = 0; i < results.length; i++) {
+            if(results[i].userID == userID){
+                meals.goal += parseInt(results[i].cel);
+                meals.difference = meals.goal - meals.calllories;
+            }
+        }  
     });
     return meals;
 };

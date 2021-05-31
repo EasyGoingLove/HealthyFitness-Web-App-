@@ -20,10 +20,22 @@ const dateGetter = async (req,res,next) =>{
     const nutrientDisplay = await calculatedDateResults(correctDate,userID);
 
     setTimeout(function(){ 
-    console.log(nutrientDisplay);  
-     }, 100);
+    // console.log(nutrientDisplay);  
+    
+    res.render('loader',{
+        protein: nutrientDisplay.protein,
+        fat: nutrientDisplay.fat,
+        carbohydrate: nutrientDisplay.carbohydrate,
+        calllories: nutrientDisplay.calllories,
+        goal:nutrientDisplay.goal,
+        difference:nutrientDisplay.difference
      
-    res.render('loader');
+
+    });
+   }, 100);
+    return nutrientDisplay;
+    
+    
     
 
 }

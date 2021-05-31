@@ -379,6 +379,12 @@ td:nth-child(5){
 		</div>
      
          	<div class="main-content" >
+				 <input type="hidden" id="protein" name="protein" value="{{protein}}">
+				 <input type="hidden" id="fat" name="fat" value="{{fat}}"> 
+				 <input type="hidden" id="carbohydrate" name="carbohydrate" value="{{carbohydrate}}"> 
+				 <input type="hidden" id="calllories" name="calllories" value="{{calllories}}"> 
+				 <input type="hidden" id="goal" name="goal" value="{{goal}}">
+				 <input type="hidden" id="difference" name="difference" value="{{difference}}">
             <center><img style="margin-top: 20%;" src="/extra/spinning-loader.gif" alt=""></center>
                             </div>
             </div>
@@ -388,6 +394,7 @@ td:nth-child(5){
 	
 </body>
 <script type="module" src="/scripts/clickedOption.js"></script>
+<script src="/scripts/loader.js"></script>
 <script>
 
 function myFunction() {

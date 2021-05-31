@@ -295,29 +295,29 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 			<div class="panel-head-calc" style="background-color: white;">
 					<div class="NetCalories">
 					<span class="NetCalories__equation">
-						<span class="NetCalories__number exercise">0</span>
+						<span class="NetCalories__number exercise">{{goal}}</span>
 						<span class="NetCalories__label">kCal Цел</span>
 						<span class="NetCalories__minussign">-</span>
-						<span class="NetCalories__number food">0</span>
+						<span class="NetCalories__number food">{{calllories}}</span>
 						<span class="NetCalories__label">kCal от Хранене</span>
-						<span class="NetCalories__equals">=</span><span class="NetCalories__number net">0</span></span>
+						<span class="NetCalories__equals">=</span><span class="NetCalories__number net">{{difference}}</span></span>
 					
 						<div class="clearfix"></div></div>
 
 				<div class="MacroTotals">
 					<span class="MacroTotals__label">Макроси:</span>
-					<span class="MacroTotals__macro"><img src="/extra/carbs.png" alt="Carbs">
-						<span class="MacroTotals__macro--value">0 гр</span>
+					<span class="MacroTotals__macro"><img src="/extra/protein.png" alt="Protein">
+						<span class="MacroTotals__macro--value">{{protein}} гр</span>
 						</span>
 						<span class="MacroTotals__macro"><img src="/extra/fats.png" alt="Fat">
-							<span class="MacroTotals__macro--value">0 гр</span>
+							<span class="MacroTotals__macro--value">{{fat}} гр</span>
 							</span>
-							<span class="MacroTotals__macro protein"><img src="/extra/protein.png" alt="Protein">
-								<span class="MacroTotals__macro--value">0 гр</span>
+							<span class="MacroTotals__macro protein"><img src="/extra/carbs.png" alt="Carbs">
+								<span class="MacroTotals__macro--value">{{carbohydrate}} гр</span>
 								</span>
 								<span class="MacroTotals__caloriesgoal">Разлика</span></div>
 								</div>
-
+                       
 			<div class="panel-wrapper-calc">
 				<div class="panel-head-calc">	
 					
@@ -326,13 +326,13 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 								<strong>Закуска</strong>
 							</div>
 							<div class="column" >
-								<img style="max-height:36px;" src="/extra/carbs.png">
+								<img style="max-height:36px; " src="/extra/protein.png">
 							</div>
 							<div class="column" >
 								<img style="max-height:36px; " src="/extra/fats.png">
 							</div>
 							<div class="columnp" >
-								<img style="max-height:36px; " src="/extra/protein.png">
+							    <img style="max-height:36px;" src="/extra/carbs.png">
 							</div>
 							<div class="scolumn1" >
 								<strong>kCal</strong>
@@ -369,13 +369,13 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 								<strong>Обяд</strong>
 							</div>
 							<div class="column" >
-								<img style="max-height:36px;" src="/extra/carbs.png">
+								<img style="max-height:36px; " src="/extra/protein.png">
 							</div>
 							<div class="column" >
 								<img style="max-height:36px; " src="/extra/fats.png">
 							</div>
 							<div class="columnp" >
-								<img style="max-height:36px; " src="/extra/protein.png">
+							    <img style="max-height:36px;" src="/extra/carbs.png">
 							</div>
 							<div class="scolumn1" >
 								<strong>kCal</strong>
@@ -411,14 +411,14 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 						    <div class="scolumn" >
 								<strong>Вечеря</strong>
 							</div>
-							<div class="column" >
-								<img style="max-height:36px;" src="/extra/carbs.png">
+						     <div class="column" >
+								<img style="max-height:36px; " src="/extra/protein.png">
 							</div>
 							<div class="column" >
 								<img style="max-height:36px; " src="/extra/fats.png">
 							</div>
 							<div class="columnp" >
-								<img style="max-height:36px; " src="/extra/protein.png">
+							    <img style="max-height:36px;" src="/extra/carbs.png">
 							</div>
 							<div class="scolumn1" >
 								<strong>kCal</strong>
@@ -456,14 +456,14 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 						    <div class="scolumn" >
 								<strong>Снакс</strong>
 							</div>
-							<div class="column" >
-								<img style="max-height:36px;" src="/extra/carbs.png">
+						<div class="column" >
+								<img style="max-height:36px; " src="/extra/protein.png">
 							</div>
 							<div class="column" >
 								<img style="max-height:36px; " src="/extra/fats.png">
 							</div>
 							<div class="columnp" >
-								<img style="max-height:36px; " src="/extra/protein.png">
+							    <img style="max-height:36px;" src="/extra/carbs.png">
 							</div>
 							<div class="scolumn1" >
 								<strong>kCal</strong>
