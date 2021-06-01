@@ -11,7 +11,7 @@ RESET STYLES
   
   background-color: transparent;
   border-radius: 0;
-  border: none;
+  border: black solid 1px;
 
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -227,15 +227,15 @@ body{
   width: 50%;" class="modal-content">
                 <form action="/auth/dashboard" method="POST" class="form-container">
                      <label class="field field_v3"><b>Име на Храната</b></label>
-                    <input style="border: #bbfdcf solid 4px;" class="field__input" type="text" id="foodName" name="foodName" required><br><br>
+                    <input class="field__input" type="text" id="foodName" name="foodName"><br><br>
                        <span class="field__label-wrap">
                     </span>
                 </label>
-                    <label for="psw"><b>Грамаж на Храната</b></label>
-                    <input style="
-                    font-size:150%;
-                    border: 3px solid #555;
-                    margin-left: 1%;"type="number" id="foodAmount" name="foodAmount" required><br><br>
+                   <label class="field field_v3"><b>Грамаж на Храната</b></label>
+                    <input class="field__input"type="number" id="foodAmount" name="foodAmount" ><br><br>
+                       <span class="field__label-wrap">
+                    </span>
+                  </label>
 
                     <button style=" 
                     background-color: #04AA6D;
