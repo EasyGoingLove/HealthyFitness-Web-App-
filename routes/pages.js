@@ -2,6 +2,7 @@ import express from 'express';
 import isLoggedIn from '../controllers/authPrivete.js';
 import api from '../FoodApi/app.js';
 import accesFoods from '../db/accesFoods.js';
+import adminCheck from '../controllers/adminCheck.js';
 
 
 const router = express.Router();
@@ -24,12 +25,29 @@ router.get('/register',isLoggedIn,(req,res)=>{
         res.render('register');
     }
 });
+router.get('/6537009498sDAE09498' ,adminCheck, async(req,res)=>{
+    if (req.user) {
+        res.redirect('/adminboard');
+    }else{  
+        res.render('adminLogin');
+    }
+    
+});
+router.get('/adminboard' ,adminCheck, async(req,res)=>{
+    if (req.user) {
+        res.render('adminboard', {
+            upload_news:adminOpt.admin_news,
+            profiles:adminOpt.admin_profiles,
+            admin_calendar: adminOpt.admin_calendar
+        });
+    }else{  
+        res.render('adminLogin');
+    } 
+});
+
 
 router.get('/loader',isLoggedIn,(req,res)=>{
-
-    console.log(req.body,2131);
-    res.redirect('/dashboard');
-    
+    res.redirect('/dashboard'); 
 });
 
 router.get('/dashboard', isLoggedIn , async(req,res)=>{
@@ -129,6 +147,15 @@ router.get('/dashboard', isLoggedIn , async(req,res)=>{
         };  
         currentOpt = options; 
     });
+    router.post('/adminboard', (req, res) =>{
+        const  options = {
+            admin_news: req.body.net[0],
+            admin_profiles: req.body.net[1],
+            admin_calendar: req.body.net[2],
+            
+        };  
+        adminOpt = options ;
+    });
 // fetch date for the foodname and amount 
     router.post('/dashboard/seached', async(req, res) =>{
         console.log(req.body);
@@ -154,6 +181,11 @@ let currentOpt = {
     profile: false,
     calculator: true,
     calendar: false
+};
+let adminOpt = { 
+    admin_news: true,
+    admin_profiles: false,
+    admin_calendar: false,
 };
 let miniCalc = {
     protein: 0,

@@ -144,14 +144,15 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 }
 
 .NetCalories__number {
-    font-size: 44px;
+    font-size: 4.4vw;
     font-weight: 700;
     padding-right:10px
 }
 
 .NetCalories__label {
     position: relative;
-    bottom:9px
+    bottom:9px;
+	font-size:2vw;
 }
 
 .NetCalories__equation {
@@ -168,13 +169,13 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 }
 
 .NetCalories__number.net {
-    font-size: 54px;
+    font-size: 5.4vw;
     float: right;
     padding:0
 }
 
 .NetCalories__equals, .NetCalories__minussign {
-    font-size: 54px;
+    font-size: 5.4vw;
     font-weight: 700;
     padding:0 34px
 }
@@ -187,7 +188,7 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
     display: block;
     float: right;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 3vw;
     position: relative;
     bottom:20px
 }
@@ -213,7 +214,7 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 }
 
 .MacroTotals__label {
-    font-size: 20px;
+    font-size: 2vw;
     margin-right:30px
 }
 
@@ -226,7 +227,7 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 
 .MacroTotals__macro--value {
     font-weight: 700;
-    font-size: 22px;
+    font-size: 2.2vw;
     color: #222722;
     margin-right:8px
 }
@@ -246,7 +247,7 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 
 .MacroTotals__caloriesgoal {
     float: right;
-    font-size: 20px;
+    font-size: 2vw;
     color:#6c6c6c
 }
 
@@ -262,7 +263,7 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 .clearfix {
     clear:both
 }
-#dateBtn{
+#dateBtn {
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
@@ -274,7 +275,6 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 5%;
-  display:inline-block; 
 }
 
 </style>
@@ -287,7 +287,7 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 			<center>
 				<input type="hidden" name="userID" value="{{user.id}}">
 				<input style="display:inline-block;" name="dateCalculator"  id="datePicker" type="date"  min="2021-01-01" >
-				<button style=" z-index: 0;" id="dateBtn" type="submit">></button>
+				<button  id="dateBtn" type="submit">></button>
 			</center><br>
 			
 			</form>
@@ -301,7 +301,7 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 						<span class="NetCalories__number food">{{calllories}}</span>
 						<span class="NetCalories__label">kCal от Хранене</span>
 						<span class="NetCalories__equals">=</span><span class="NetCalories__number net">{{difference}}</span></span>
-					
+					<span class="MacroTotals__caloriesgoal">Разлика</span>
 						<div class="clearfix"></div></div>
 
 				<div class="MacroTotals">
@@ -315,7 +315,7 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 							<span class="MacroTotals__macro protein"><img src="/extra/carbs.png" alt="Carbs">
 								<span class="MacroTotals__macro--value">{{carbohydrate}} гр</span>
 								</span>
-								<span class="MacroTotals__caloriesgoal">Разлика</span></div>
+								</div>
 								</div>
                        
 			<div class="panel-wrapper-calc">
@@ -501,3 +501,4 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 		})();
 		
 	</script>
+	

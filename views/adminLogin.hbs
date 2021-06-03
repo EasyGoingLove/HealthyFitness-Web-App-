@@ -1,50 +1,41 @@
-<style>
-    body{
-      
-    }
-input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Pragma" content="no-cache" />
+     <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <title>Влизане За Админ</title>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
 
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <h2>HealthyFitness</h2><br>
+      <h2>Влизане За Админ</h2>
+    </div>
+                {{#if message}}
+                <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <strong>{{message}}</strong> 
+                </div>
+                {{/if}}
+    <!-- Login Form -->
+    <form action="/auth/6537009498sDAE09498" method="POST">
+      <input type="text" id="email" class="fadeIn second" name="adminName" placeholder="Админ Име">
+      <input type="password" id="pass" class="fadeIn second" name="adminpass" placeholder="Парола">
+      <input type="submit" class="fadeIn fourth" value="Влизане">
+    </form>
 
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-div {
-  height: 100%;
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-
-}
-</style>
-
-<div>
-  <form action="/action_page.php" method="POST">
-   <center><h1>Admin Panel</h1></center>
-    <label for="fname">Име на Админа</label>
-    <input type="text" id="fname" name="firstname" placeholder="Име">
-
-    <label for="lname">Парола</label>
-    <input type="text" id="lname" name="lastname" placeholder="Парола">
   
-    <input type="submit" value="Влез">
-  </form>
-</div>
+  </div>
+</body>
+</html>

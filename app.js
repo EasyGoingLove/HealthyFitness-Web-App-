@@ -50,9 +50,7 @@ app.use('/auth', authRouter);
 app.use('/register', router);
 
 
-app.use('/6537009498sDAE09498',(req,res)=>{
-    res.render('adminLogin');
-});
+app.use('/6537009498sDAE09498',router);
 
 app.listen('5000' , ()=> {
     console.log('Server listening on port 3000!');

@@ -24,7 +24,7 @@ router.get('/dashboard/foodResults',authFoodRes);
 
 router.post('/loader',authDate);
 
-router.post('/6537009498sDAE09498',authAdmin)
+router.post('/6537009498sDAE09498',authAdmin);
 
 
 router.get('/logout',authControllerLogOut);

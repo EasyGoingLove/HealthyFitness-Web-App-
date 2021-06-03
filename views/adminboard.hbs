@@ -302,12 +302,11 @@ header {
 		<div id="sidebar" class="sidebar"> 
 			<nav>
 				<a href="/">Healthy<span>Athletic</span></a>
-                <h1 style="text-align: center; color:white;">{{user.name}}</h1>
+                <h1 style="text-align: center; color:white;">Admin Milen</h1><br>
 				<ul>
-					<li id="ne0ws" class="rar {{#if news}}{{active}}{{/if}}"> <a class="newsz" href="">Новини</a> </li>
-					<li id="profile" class="rar {{#if profile}}{{active}}{{/if}}"><a class="profile" href="">Профил</a></li>
-					<li id="calculator"class="rar {{#if calculator}}{{active}}{{/if}}"><a class="calculator" href="">Калкулатор</a></li>
-					<li id="calendar"class="rar {{#if calendar}}{{active}}{{/if}}"><a class="calendar" href="">Календар</a></li>
+					<li id="ne0ws" class="rar {{#if news}}{{active}}{{/if}}"> <a class="newsz" href="">Качи Новини</a> </li>
+					<li id="profile" class="rar {{#if profile}}{{active}}{{/if}}"><a class="profile" href="">Профили на Потребители</a></li>
+					<li id="calculator"class="rar {{#if calculator}}{{active}}{{/if}}"><a class="calculator" href="">График за Срещи</a></li>
 					<li><a href="/auth/logout">Излизане</a></li>
 					<li class="x_onPhone"><button id="x_btnStyle" class="x_btnStyle">X</button></li>
 				</ul>
@@ -315,15 +314,14 @@ header {
 			
 		</div>
      <div id="thisdiv">
-	{{#if news}}{{>news}}{{/if}}
-	{{#if profile}}{{>profile}}{{/if}}
-	{{#if calculator}}{{>calculator}}{{/if}}
-	{{#if calendar}}{{>calendar}}{{/if}}
+	{{#if upload_news}}{{>adminNews}}{{/if}}
+	{{#if profiles}}{{>adminProfiles}}{{/if}}
+	{{#if admin_calendar}}{{>adminCalendar}}{{/if}}
 	</div>
 	
 	
 </body>
-<script type="module" src="/scripts/clickedOption.js"></script>
+<script type="module" src="/scripts/adminMenu.js"></script>
 
 
 
