@@ -9,7 +9,13 @@ const router = express.Router();
 
 router.get('/',(req,res)=>{
     res.render('home');
-})
+});
+router.get('/aboutUs',(req,res)=>{
+    res.render('aboutUs');
+});
+router.get('/contacts',(req,res)=>{
+    res.render('contacts');
+});
 router.get('/login',isLoggedIn,(req,res)=>{
     if (req.user) {
         res.redirect('/dashboard');

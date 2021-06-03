@@ -44,7 +44,9 @@ app.use(express.json());
 app.use(cookieParser());
 
 //Define Routes
-app.use('/', router);
+app.use('/',router);
+app.use('/aboutUs',router);
+app.use('/contacts',router);
 app.use('/login', router);
 app.use('/auth', authRouter);
 app.use('/register', router);
