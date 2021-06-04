@@ -1,4 +1,88 @@
+<style>
+    .form__label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  margin-left: 2rem;
+  margin-top: 0.7rem;
+  display: block;
+  transition: all 0.3s;
+  transform: translateY(0rem);
+}
+
+.form__input {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-size: 1.2rem;
+	margin: 0 auto;
+  padding: 1.5rem 2rem;
+  border-radius: 0.2rem;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  width: 90%;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+}
+
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-4rem);
+  transform: translateY(-4rem);
+}
+#newsSbmit {
+  background-color: #008CBA; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-left: 50%;
+}
+.alert{
+    display: none;
+    background-color: green;
+    padding: 10px;
+    position: fixed;
+}
+
+</style>
 
 <div class="main-content">
-<h1>load news</h1>
+          <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <strong style="color: white;">Качването беше Успешно</strong> 
+            </div>
+    <div class="panel-wrapper" style="padding-top: 5%;">
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+            <div class="form__group">
+                <div class="panel-head">
+                    Качи Новина
+                </div>
+                <div class="panel-body">
+                    <h1>Напишете новината в текстовото поле "Новини" и натиснете бутона "Качи"</h1><br><br>
+
+                    <form action="/auth/news" method="post">
+                    <textarea style="height:200px" type="text" class="form__input" placeholder="Пишете тук ....." name="news" required="" ></textarea>
+                     <label for="name" class="form__label">Въвеждане...</label> 
+                     <button id="newsSbmit" type="submit">Качи</button>
+                    </form>
+
+                </div>
+         </div>
+
+        
+     </div>		
+           
 </div>
+<script>
+    document.getElementById('newsSbmit').addEventListener('click', (e) =>{
+       document.querySelector('.alert').style.display = "block";
+    })
+
+</script>

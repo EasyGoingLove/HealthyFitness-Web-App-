@@ -3,6 +3,8 @@ import isLoggedIn from '../controllers/authPrivete.js';
 import api from '../FoodApi/app.js';
 import accesFoods from '../db/accesFoods.js';
 import adminCheck from '../controllers/adminCheck.js';
+import news_getter from '../db/getNews.js';
+import profile_getter from '../db/getProfiles.js';
 
 
 const router = express.Router();
@@ -40,12 +42,20 @@ router.get('/6537009498sDAE09498' ,adminCheck, async(req,res)=>{
     
 });
 router.get('/adminboard' ,adminCheck, async(req,res)=>{
+    let profiles_fromDb  = await profile_getter();
     if (req.user) {
-        res.render('adminboard', {
+        
+        setTimeout(function(){ 
+            
+            res.render('adminboard', {
             upload_news:adminOpt.admin_news,
             profiles:adminOpt.admin_profiles,
-            admin_calendar: adminOpt.admin_calendar
+            admin_calendar: adminOpt.admin_calendar,
+            active: 'active',
+            profilesDisplay:profiles_fromDb
+
         });
+    }, 100);
     }else{  
         res.render('adminLogin');
     } 
@@ -59,14 +69,12 @@ router.get('/loader',isLoggedIn,(req,res)=>{
 router.get('/dashboard', isLoggedIn , async(req,res)=>{
     if (req.user) {
        let dailyFood =  await accesFoods(req.user.id);
-      
+        let news =  await news_getter();
       
         const date = convert(req.user.dataOfBirth);
-        // searchResults.length = 0;
-        //     console.log(timeOfday);
-        //  console.log(searchResults);
+       
         setTimeout(function(){ 
-        console.log(dailyFood);
+        console.log(news);
         let miniCalendar = {};
         if(usingThe_miniCalendar(miniCalc)){
             miniCalendar = miniCalc;
@@ -107,7 +115,9 @@ router.get('/dashboard', isLoggedIn , async(req,res)=>{
             carbohydrate: miniCalendar.carbohydrate,
             calllories: miniCalendar.calllories,
             goal:miniCalendar.goal,
-            difference:miniCalendar.difference
+            difference:miniCalendar.difference,
+            newsData:news
+
 
 
         });
@@ -164,7 +174,6 @@ router.get('/dashboard', isLoggedIn , async(req,res)=>{
     });
 // fetch date for the foodname and amount 
     router.post('/dashboard/seached', async(req, res) =>{
-        console.log(req.body);
       timeOfday = req.body.net[2];
     //   console.log(timeOfday);
       searchResults =  await api(req.body.net[0],req.body.net[1]);
@@ -211,7 +220,7 @@ const  convert = (str) => {
     return [date.getFullYear(), mnth, day].join("-");
   }
  const usingThe_miniCalendar = (searchedFoodBydaye)=>{
-    console.log(searchedFoodBydaye);
+    // console.log(searchedFoodBydaye);
    if (searchedFoodBydaye.protein=== 0&&searchedFoodBydaye.fat === 0&&searchedFoodBydaye.carbohydrate ===0) {
        return false;
    }else{return true};

@@ -1,3 +1,18 @@
-<div class="main-content">
-<h1>admin profiles</h1>
-</div>
+
+	<div class="main-content">
+			<h1>Потребителска Информация</h1>
+			<p>Цялата Въведена Информация За Потребителите При Регистрация.</p>
+			
+				{{#each profilesDisplay.main_information}} 
+				<div class="panel-wrapper">		   
+				<div class="panel-head">
+					Новини
+				</div>
+				<div class="panel-body">
+					{{.}} lives in {{lookup ../profilesDisplay.secondary_information @index}}
+				</div>
+			</div>
+               {{/each}}
+			
+		</div>
+	</div>
