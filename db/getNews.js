@@ -9,7 +9,6 @@ const news_getter = async() => {
         
 
         for (let i = results.length-1; i >= 0; i--) {
-            console.log(results[i].news);
             news.push(results[i].news);
             
         }  

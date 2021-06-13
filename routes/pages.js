@@ -46,7 +46,6 @@ router.get('/adminboard' ,adminCheck, async(req,res)=>{
     if (req.user) {
         
         setTimeout(function(){ 
-            
             res.render('adminboard', {
             upload_news:adminOpt.admin_news,
             profiles:adminOpt.admin_profiles,
@@ -74,7 +73,6 @@ router.get('/dashboard', isLoggedIn , async(req,res)=>{
         const date = convert(req.user.dataOfBirth);
        
         setTimeout(function(){ 
-        console.log(news);
         let miniCalendar = {};
         if(usingThe_miniCalendar(miniCalc)){
             miniCalendar = miniCalc;

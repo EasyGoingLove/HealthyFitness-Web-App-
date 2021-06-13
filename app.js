@@ -36,6 +36,10 @@ hbs.registerHelper('nthIteration', function(index, i, options) {
     }
     return options.inverse(this);
 });
+hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+
 //Parse URl- encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({extended:false}));
 //Parse JSON bodies (as sent by API client)

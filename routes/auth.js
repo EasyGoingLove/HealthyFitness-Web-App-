@@ -8,6 +8,7 @@ import authFoodRes from '../controllers/authFoodRes.js';
 import authDate from '../controllers/authDate.js';
 import authAdmin from '../controllers/admin.js';
 import newsUploader from '../controllers/saveNews.js';
+import setGoal from '../controllers/setGoal.js';
 
 
 
@@ -28,6 +29,8 @@ router.post('/loader',authDate);
 router.post('/6537009498sDAE09498',authAdmin);
 
 router.post('/news',newsUploader);
+
+router.post('/setGoal',setGoal);
 
 
 router.get('/logout',authControllerLogOut);

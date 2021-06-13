@@ -1,7 +1,6 @@
 import db from '../db/db.js';
 
 const newsUploader = (req,res) =>{
-    console.log(req.body.news);
 
     db.query('INSERT INTO news SET ?', {news:req.body.news}, (error,results)=>{
         if(error){console.log(error)} 
