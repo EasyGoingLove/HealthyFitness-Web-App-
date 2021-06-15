@@ -9,6 +9,7 @@ import authDate from '../controllers/authDate.js';
 import authAdmin from '../controllers/admin.js';
 import newsUploader from '../controllers/saveNews.js';
 import setGoal from '../controllers/setGoal.js';
+import getFullinf from '../db/getFullinfo.js';
 
 
 
@@ -31,6 +32,8 @@ router.post('/6537009498sDAE09498',authAdmin);
 router.post('/news',newsUploader);
 
 router.post('/setGoal',setGoal);
+
+router.post('/fullinfoSearch',getFullinf);
 
 
 router.get('/logout',authControllerLogOut);

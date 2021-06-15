@@ -68,9 +68,19 @@
 	<div class="main-content">
 			<h1>Потребителска Информация</h1>
 			<p>Всички регистрирани потребители и техните цели.</p>
+      <button 
+      onclick="openFormm()"
+      style="
+      width:100%;
+      height: 20px;
+      background-color:#509fcf;
+      color:white;
+      border:none;
+      
+      ">Виж Цялата Информация за даден потребител</button>
 
 			
-				{{#each profilesDisplay.all_registered_users}} 
+				{{#each profilesDisplay}} 
                  
 				{{#ifEquals this "🌞"}}
 				<div class="panel-wrapper">		   
@@ -84,7 +94,7 @@
 				<button onclick="openForm()" id="goal" style="
 				width: 100%;
 				height: 20px;
-			    background-color:rgb(103, 233, 103);
+			  background-color:rgb(103, 233, 103);
 				color:white;
 				border:none;">Задай или Поднови цел</button>
 				<br>
@@ -92,8 +102,32 @@
 					</div>
 				{{/ifEquals}}
                {{/each}}
+
+			   {{#each goalDisplay}} 
+                 
+				{{#ifEquals this "🌞"}}
+				<div class="panel-wrapper">		   
+				<div class="panel-head">
+					Потребител
+				</div>
+					<div class="panel-body">
+				{{/ifEquals}}
+				{{this}} <br>
+				{{#ifEquals this "🌝"}}
+				<button onclick="openForm()" id="goal" style="
+				width: 100%;
+				height: 20px;
+			  background-color:rgb(103, 233, 103);
+				color:white;
+				border:none;">Задай или Поднови цел</button>
+				<br>
+					</div>
+					</div>
+				{{/ifEquals}}
+        {{/each}}
+			   
 	 </div>
-	  <div class="loginPopup">
+	    <div class="loginPopup">
       <div class="formPopup" id="popupForm">
         <form action="/auth/setGoal" class="formContainer" method="POST">
           <h2>Задайите цел на Потребител</h2>
@@ -110,6 +144,21 @@
         </form>
       </div>
     </div>
+
+    <div class="loginPopup">
+      <div class="formPopup" id="popuppForm">
+        <form action="/auth/fullinfoSearch" class="formContainer" method="POST">
+          <h2>Информация за Потребител с ID</h2>
+          <label for="email">
+            <strong>Потребителско ID</strong>
+          </label>
+          <input type="number" id="email" placeholder="ID" name="id" required>
+          <button type="submit" class="btn">Търси</button>
+          <button type="button" class="btn cancel" onclick="closeFormm()">Затвори</button>
+        </form>
+      </div>
+    </div>
+
 	 <script src="/scripts/setgoal.js"></script>
 	  <script>
       function openForm() {
@@ -118,4 +167,18 @@
       function closeForm() {
         document.getElementById("popupForm").style.display = "none";
       }
+      function openFormm() {
+        document.getElementById("popuppForm").style.display = "block";
+      }
+      function closeFormm() {
+        document.getElementById("popuppForm").style.display = "none";
+      }
+    </script>
+    <script>
+      var req = new XMLHttpRequest();
+      req.open("POST", "address_for_div_content", true);
+      req.onreadystatechange = function () {
+        if (req.readyState != 4 || req.status != 200) return;
+        document.getElementById('id_of_div')=req.responseText;
+      };
     </script>

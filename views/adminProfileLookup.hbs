@@ -1,0 +1,70 @@
+<style>
+
+body {
+height: 100%;
+}
+
+body {
+	margin: 0;
+	background: linear-gradient(45deg, #49a09d, #5f2c82);
+	font-family: sans-serif;
+	font-weight: 100;
+}
+
+.container{
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
+th{
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
+    padding-top: 6%;
+}
+table{
+   	width: width: 60%;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+#btn1 {
+  position: fixed;
+  left: 2%;
+  bottom: 5%;
+  z-index: 1000;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 1.5% 3.2%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+  margin: 4% 2%;
+  cursor: pointer;
+}
+
+</style>
+<div class="container">
+	<table>
+        {{#each userinfo}}
+		<thead>
+			<tr>
+				<th>{{this}}</th>
+			</tr>
+           </thead>
+		</tbody>
+         {{/each}}
+	</table>
+</div>
+
+<button id="btn1" >Върни се обратно в Dashboard</button>
+
+<script>
+    const btn1 = document.getElementById('btn1');
+    btn1.addEventListener('click',(e)=>{
+       location.href = "/adminboard";
+    });
+</script>
+
+

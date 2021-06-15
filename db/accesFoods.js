@@ -100,7 +100,9 @@ const getUsersFood = async(userID)=>{
             if(results[i].userID == userID){
                 meals.goal += parseInt(results[i].cel);
                 meals.difference = meals.goal - meals.calllories;
-            }
+                if (meals.difference <0) {
+                    meals.difference=0;
+                }            }
         }  
     });
     return meals;

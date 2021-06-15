@@ -1,4 +1,165 @@
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
-<div class="main-content">
-<h1>clendarrrrrrr</h1>
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  
+}
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+      * {
+        box-sizing: border-box;
+      }
+      .openBtn {
+        display: flex;
+        justify-content: left;
+      }
+      .openButton {
+        border: none;
+        border-radius: 5px;
+        background-color: #1c87c9;
+        color: white;
+        padding: 14px 20px;
+        cursor: pointer;
+        position: fixed;
+      }
+      .loginPopup {
+        position: relative;
+        text-align: center;
+        width: 100%;
+      }
+      .formPopup {
+        display: none;
+        position: fixed;
+        left: 45%;
+        top: 5%;
+        transform: translate(-50%, 5%);
+        border: 3px solid #999999;
+        z-index: 9;
+      }
+      .formContainer {
+        max-width: 300px;
+        padding: 20px;
+        background-color: #fff;
+      }
+      .formContainer input[type=text],
+      .formContainer input[type=text] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 20px 0;
+        border: none;
+        background: #eee;
+      }
+      .formContainer input[type=text]:focus,
+      .formContainer input[type=text]:focus {
+        background-color: #ddd;
+        outline: none;
+      }
+      .formContainer .btn {
+        padding: 12px 20px;
+        border: none;
+        background-color: #8ebf42;
+        color: #fff;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 15px;
+        opacity: 0.8;
+      }
+      .formContainer .cancel {
+        background-color: #cc0000;
+      }
+      .formContainer .btn:hover,
+      .openButton:hover {
+        opacity: 1;
+      }
+    
+</style>
+	<div class="main-content">
+			<h1>График</h1>
+			<p>Информация за Графиците:</p>
+                <center><button onclick="openForm()" class="button button1">Добави в Графика</button></center>
+				<div class="panel-wrapper">		   
+                    <div class="panel-head">
+                        Потребител
+                    </div>
+
+                    <div class="panel-body">
+                        
+                        <table id="customers">
+                        <tr>
+                            <th>Понеделник</th>
+                            <th>Вторник</th>
+                            <th>Сряда</th>
+                            <th>Четвъртък</th>
+                            <th>Петък</th>
+                            <th>Събота</th>
+                            <th>Неделя</th>
+                        </tr>
+                        </table>
+                    </div>
+				</div>
+                	 </div>
+	    <div class="loginPopup">
+      <div class="formPopup" id="popupForm">
+        <form action="/auth/setGoal" class="formContainer" method="POST">
+          <h2>Добави </h2>
+          <label for="email">
+            <strong>Ден</strong>
+          </label>
+          <input type="text" id="email" placeholder="Ден" name="id" required>
+          <label for="psw">
+            <strong>Час</strong>
+          </label>
+          <input type="text" id="psw" placeholder="Час" name="cel" required>
+          <button type="submit" class="btn">Добави</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Затвори</button>
+        </form>
+      </div>
+    </div>
 </div>
+ <script>
+      function openForm() {
+        document.getElementById("popupForm").style.display = "block";
+      }
+      function closeForm() {
+        document.getElementById("popupForm").style.display = "none";
+      }
+    </script>

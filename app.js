@@ -58,6 +58,10 @@ app.use('/register', router);
 
 app.use('/6537009498sDAE09498',router);
 
+app.get('*', function(req, res){
+    res.render('errorpg');
+  });
+
 app.listen('5000' , ()=> {
     console.log('Server listening on port 3000!');
 })

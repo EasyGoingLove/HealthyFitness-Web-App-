@@ -51,13 +51,23 @@ router.get('/adminboard' ,adminCheck, async(req,res)=>{
             profiles:adminOpt.admin_profiles,
             admin_calendar: adminOpt.admin_calendar,
             active: 'active',
-            profilesDisplay:profiles_fromDb
+            profilesDisplay:profiles_fromDb.all_registered_users,
+            goalDisplay:profiles_fromDb.all_users_with_goals
 
         });
     }, 100);
     }else{  
         res.render('adminLogin');
     } 
+});
+
+router.get('/profileLook',adminCheck, async(req,res)=>{
+    if (req.user) {
+     res.redirect('/profileLook')
+    }else{  
+        res.render('adminLogin');
+    } 
+
 });
 
 

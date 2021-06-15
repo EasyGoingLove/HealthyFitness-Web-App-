@@ -278,8 +278,18 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 }
 
 </style>
+{{#ifEquals user.plan "Безплатен"}}
+<style>
+td:nth-child(2),td:nth-child(3),td:nth-child(4){
+   display: none;
+}
+td:nth-child(5){
+padding-left: 30.5em;
+}
+</style>
+
+{{/ifEquals}}  
 <div class="main-content">
-	
 			<h1 style="text-align: center;">{{user.plan}} Калкулатор</h1><br>
 
 			 <form  action="/auth/loader" method="POST" class="form-container">
@@ -301,10 +311,11 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 						<span class="NetCalories__number food">{{calllories}}</span>
 						<span class="NetCalories__label">kCal от Хранене</span>
 						<span class="NetCalories__equals">=</span><span class="NetCalories__number net">{{difference}}</span></span>
-					<span class="MacroTotals__caloriesgoal">Разлика</span>
+					<span class="MacroTotals__caloriesgoal">Оставащи kCal</span>
 						<div class="clearfix"></div></div>
-
+         
 				<div class="MacroTotals">
+					{{#ifEquals user.plan "Премиум"}}	
 					<span class="MacroTotals__label">Макроси:</span>
 					<span class="MacroTotals__macro"><img src="/extra/protein.png" alt="Protein">
 						<span class="MacroTotals__macro--value">{{protein}} гр</span>
@@ -316,8 +327,9 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 								<span class="MacroTotals__macro--value">{{carbohydrate}} гр</span>
 								</span>
 								</div>
+					 {{/ifEquals}}  
 								</div>
-                       
+            
 			<div class="panel-wrapper-calc">
 				<div class="panel-head-calc">	
 					
@@ -340,6 +352,7 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 							</div>
 					
 				</div>
+				
 				<div class="panel-body-calc">    
                 {{#if breakfast}}      
                          <table >
@@ -352,6 +365,9 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 									{{#nthIteration @index 15}}</tr>{{/nthIteration}}
 									{{#nthIteration @index 20}}</tr>{{/nthIteration}}
 									{{#nthIteration @index 25}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 30}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 35}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 40}}</tr>{{/nthIteration}}
                                    <td ><h4 >{{this}}</h4></td>
                                     {{/each}}
 									</tr>
@@ -390,11 +406,14 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 								<tr style="padding-bottom: 1em;">
                                       
                                     {{#each lunch~}} 
-								      {{#nthIteration @index 5}}</tr>{{/nthIteration}}
+								          {{#nthIteration @index 5}}</tr>{{/nthIteration}}
 									{{#nthIteration @index 10}}</tr>{{/nthIteration}}
 									{{#nthIteration @index 15}}</tr>{{/nthIteration}}
 									{{#nthIteration @index 20}}</tr>{{/nthIteration}}
 									{{#nthIteration @index 25}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 30}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 35}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 40}}</tr>{{/nthIteration}}
                                    <td> <h4>{{this}}</h4></td>
                                     {{/each~}}
 									</tr>
@@ -440,6 +459,9 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 									{{#nthIteration @index 15}}</tr>{{/nthIteration}}
 									{{#nthIteration @index 20}}</tr>{{/nthIteration}}
 									{{#nthIteration @index 25}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 30}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 35}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 40}}</tr>{{/nthIteration}}
                                    <td> <h4>{{this}}</h4></td>
                                     {{/each~}}
 									</tr>
@@ -478,11 +500,14 @@ input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15
 								<tr style="padding-bottom: 1em;">
                                       
                                     {{#each snacks~}} 
-								      {{#nthIteration @index 5}}</tr>{{/nthIteration}}
+								         {{#nthIteration @index 5}}</tr>{{/nthIteration}}
 									{{#nthIteration @index 10}}</tr>{{/nthIteration}}
 									{{#nthIteration @index 15}}</tr>{{/nthIteration}}
 									{{#nthIteration @index 20}}</tr>{{/nthIteration}}
 									{{#nthIteration @index 25}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 30}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 35}}</tr>{{/nthIteration}}
+									{{#nthIteration @index 40}}</tr>{{/nthIteration}}
                                    <td> <h4>{{this}}</h4></td>
                                     {{/each~}}
 									</tr>
