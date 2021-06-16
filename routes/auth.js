@@ -10,6 +10,9 @@ import authAdmin from '../controllers/admin.js';
 import newsUploader from '../controllers/saveNews.js';
 import setGoal from '../controllers/setGoal.js';
 import getFullinf from '../db/getFullinfo.js';
+import setMeetingDate from'../controllers/setMeetingDate.js';
+import suggestedDate from '../controllers/suggestedDate.js';
+import deleteSuggestion from '../controllers/deleteSuggestion.js';
 
 
 
@@ -25,6 +28,8 @@ router.post('/dashboard/submit', authSearchedFood);
 
 router.get('/dashboard/foodResults',authFoodRes);
 
+router.post('/suggestedDate',suggestedDate);
+
 router.post('/loader',authDate);
 
 router.post('/6537009498sDAE09498',authAdmin);
@@ -34,6 +39,11 @@ router.post('/news',newsUploader);
 router.post('/setGoal',setGoal);
 
 router.post('/fullinfoSearch',getFullinf);
+
+router.post('/setMeetingDate',setMeetingDate);
+
+router.post('/deleteSuggestion',deleteSuggestion);
+
 
 
 router.get('/logout',authControllerLogOut);

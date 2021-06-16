@@ -2,7 +2,7 @@
 #customers {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  
 }
 
 #customers td, #customers th {
@@ -125,30 +125,103 @@
                         
                         <table id="customers">
                         <tr>
-                            <th>Понеделник</th>
-                            <th>Вторник</th>
-                            <th>Сряда</th>
-                            <th>Четвъртък</th>
-                            <th>Петък</th>
-                            <th>Събота</th>
-                            <th>Неделя</th>
-                        </tr>
+                            <th>Понеделник</th><td> 
+                            {{#each monday}} 
+                            {{this}} <br> {{#ifEquals this "."}}</td ><td>{{/ifEquals}}
+                            {{/each}}
+       
+                       </tr>
+
+                       <tr>
+                            <th>Вторник</th><td>
+                            {{#each tuesday}} 
+                            {{this}} <br> {{#ifEquals this "."}}</td><td>{{/ifEquals}}
+                            {{/each}}
+
+                       </tr>
+
+                       <tr>
+                           <th>Сряда</th><td>
+                           {{#each wednesday}} 
+                            {{this}} <br> {{#ifEquals this "."}}</td><td>{{/ifEquals}}
+                            {{/each}}
+                       </tr>
+                       
+                       <tr>
+                           <th>Четвъртък</th><td>
+                            {{#each thursday}} 
+                            {{this}} <br> {{#ifEquals this "."}}</td><td>{{/ifEquals}}
+                            {{/each}}
+                       </tr>
+
+                       <tr>
+                           <th>Петък</th><td>
+                              {{#each friday}} 
+                            {{this}} <br> {{#ifEquals this "."}}</td><td>{{/ifEquals}}
+                            {{/each}}
+                       </tr>
+
+                       <tr>
+                           <th>Събота</th><td>
+                              {{#each saturday}} 
+                            {{this}} <br> {{#ifEquals this "."}}</td><td>{{/ifEquals}}
+                            {{/each}}
+                       </tr>
+
+                       <tr>
+                           <th>Неделя</th><td>
+                              {{#each sunday}} 
+                            {{this}} <br> {{#ifEquals this "."}}</td><td>{{/ifEquals}}
+                            {{/each}}
+                      </tr>
+                      
                         </table>
+                        <center><h1>Предложения от потребители</h1></center>
+                        <center> <br>
+
+                        <form style="border: 2px dotted rgb(103, 230, 103);" action="/auth/deleteSuggestion" method="POST">
+                          <label for="delete_id">Изтрии Предложение</label>
+                          Въведете ID на предложение и го изтриите. <br>
+                          <input type="number" name="delete_id">
+                          <button type="submit">Изтрии</button>
+                        </form>
+                        </center>
+
+                        <br><br><br>
+                        {{#each suggest}}
+                        <h4>Предложение</h4>
+                        <p>{{this}}</p> <br><br>
+                        {{/each}}
                     </div>
 				</div>
+
                 	 </div>
-	    <div class="loginPopup">
+	 <div class="loginPopup">
       <div class="formPopup" id="popupForm">
-        <form action="/auth/setGoal" class="formContainer" method="POST">
-          <h2>Добави </h2>
+        <form action="/auth/setMeetingDate" class="formContainer" method="POST">
+          <h2>Добави </h2><br><br>
           <label for="email">
             <strong>Ден</strong>
-          </label>
-          <input type="text" id="email" placeholder="Ден" name="id" required>
+          </label><br>
+
+          <select style="height: 3em; width:20em;"  class="fadeIn second" name="day" id="day">
+            <option  value="Понеделник">Понеделник</option>
+            <option  value="Вторник">Вторник</option>
+            <option  value="Сряда">Сряда</option>
+            <option  value="Четвъртък">Четвъртък</option>
+            <option  value="Петък">Петък</option>
+            <option  value="Събота">Събота</option>
+            <option  value="Неделя">Неделя</option>
+         </select><br><br>
+
           <label for="psw">
             <strong>Час</strong>
+            <p>Примерен час: 13:55 , 8:45</p>
           </label>
-          <input type="text" id="psw" placeholder="Час" name="cel" required>
+          <input type="text" id="psw" placeholder="Час" name="hour" required><br>
+
+          <label for="date"> <strong>Дата</strong></label><br>
+          <input type="date" name="date" ><br><br>
           <button type="submit" class="btn">Добави</button>
           <button type="button" class="btn cancel" onclick="closeForm()">Затвори</button>
         </form>

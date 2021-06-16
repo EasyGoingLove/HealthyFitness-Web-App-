@@ -5,6 +5,8 @@ import accesFoods from '../db/accesFoods.js';
 import adminCheck from '../controllers/adminCheck.js';
 import news_getter from '../db/getNews.js';
 import profile_getter from '../db/getProfiles.js';
+import adminGrafik from '../db/adminGrafik.js';
+import getSuggestions from '../db/getSuggestions.js';
 
 
 const router = express.Router();
@@ -43,16 +45,27 @@ router.get('/6537009498sDAE09498' ,adminCheck, async(req,res)=>{
 });
 router.get('/adminboard' ,adminCheck, async(req,res)=>{
     let profiles_fromDb  = await profile_getter();
+    let day_grafik = await adminGrafik();
+    let suggestions = await getSuggestions();
     if (req.user) {
         
         setTimeout(function(){ 
+            console.log(suggestions);
             res.render('adminboard', {
             upload_news:adminOpt.admin_news,
             profiles:adminOpt.admin_profiles,
             admin_calendar: adminOpt.admin_calendar,
             active: 'active',
             profilesDisplay:profiles_fromDb.all_registered_users,
-            goalDisplay:profiles_fromDb.all_users_with_goals
+            goalDisplay:profiles_fromDb.all_users_with_goals,
+            monday:day_grafik.monday,
+            tuesday:day_grafik.tuesday,
+            wednesday:day_grafik.wednesday,
+            thursday:day_grafik.thursday,
+            friday:day_grafik.friday,
+            saturday:day_grafik.saturday,
+            sunday:day_grafik.sunday,
+            suggest:suggestions
 
         });
     }, 100);
@@ -79,7 +92,8 @@ router.get('/dashboard', isLoggedIn , async(req,res)=>{
     if (req.user) {
        let dailyFood =  await accesFoods(req.user.id);
         let news =  await news_getter();
-      
+        let day_grafik = await adminGrafik();
+
         const date = convert(req.user.dataOfBirth);
        
         setTimeout(function(){ 
@@ -104,7 +118,6 @@ router.get('/dashboard', isLoggedIn , async(req,res)=>{
                 difference:dailyFood.difference
 
             }
-
         }
         res.render('dashboard',{
             user: req.user,
@@ -124,7 +137,14 @@ router.get('/dashboard', isLoggedIn , async(req,res)=>{
             calllories: miniCalendar.calllories,
             goal:miniCalendar.goal,
             difference:miniCalendar.difference,
-            newsData:news
+            newsData:news,
+            monday:day_grafik.user_monday,
+            tuesday:day_grafik.user_tuesday,
+            wednesday:day_grafik.user_wednesday,
+            thursday:day_grafik.user_thursday,
+            friday:day_grafik.user_friday,
+            saturday:day_grafik.user_saturday,
+            sunday:day_grafik.user_sunday
 
 
 
