@@ -50,7 +50,6 @@ router.get('/adminboard' ,adminCheck, async(req,res)=>{
     if (req.user) {
         
         setTimeout(function(){ 
-            console.log(suggestions);
             res.render('adminboard', {
             upload_news:adminOpt.admin_news,
             profiles:adminOpt.admin_profiles,

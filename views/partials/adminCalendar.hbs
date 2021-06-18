@@ -118,7 +118,7 @@
                 <center><button onclick="openForm()" class="button button1">Добави в Графика</button></center>
 				<div class="panel-wrapper">		   
                     <div class="panel-head">
-                        Потребител
+                        Таблица С Графика
                     </div>
 
                     <div class="panel-body">
@@ -176,21 +176,34 @@
                       </tr>
                       
                         </table>
+
+                        <div class="panel-head">
                         <center><h1>Предложения от потребители</h1></center>
+                        </div>
+
                         <center> <br>
 
                         <form style="border: 2px dotted rgb(103, 230, 103);" action="/auth/deleteSuggestion" method="POST">
-                          <label for="delete_id">Изтрии Предложение</label>
+                          <label for="delete_id"> <p> Изтрии Предложение</p></label>
                           Въведете ID на предложение и го изтриите. <br>
                           <input type="number" name="delete_id">
                           <button type="submit">Изтрии</button>
                         </form>
+
                         </center>
 
                         <br><br><br>
+                       
+
+                    
+                       </div>
                         {{#each suggest}}
-                        <h4>Предложение</h4>
+                          <div class="panel-head">
+                          <h4>Предложение</h4>
+                       </div>
+                      <div class="panel-body">
                         <p>{{this}}</p> <br><br>
+                        </div>
                         {{/each}}
                     </div>
 				</div>

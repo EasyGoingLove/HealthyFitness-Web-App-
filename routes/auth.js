@@ -13,7 +13,7 @@ import getFullinf from '../db/getFullinfo.js';
 import setMeetingDate from'../controllers/setMeetingDate.js';
 import suggestedDate from '../controllers/suggestedDate.js';
 import deleteSuggestion from '../controllers/deleteSuggestion.js';
-
+import saveMeeting from '../controllers/saveMeeting.js';
 
 
 const router = express.Router();
@@ -29,6 +29,8 @@ router.post('/dashboard/submit', authSearchedFood);
 router.get('/dashboard/foodResults',authFoodRes);
 
 router.post('/suggestedDate',suggestedDate);
+
+router.post('/saveMeeting',saveMeeting);
 
 router.post('/loader',authDate);
 

@@ -12,6 +12,12 @@ const login = async(req,res) => {
         });
       }
       db.query('SELECT * FROM basicusers WHERE email = ?',[email],async(error,results) =>{
+        if(results ==false){
+            console.log("asdas");
+            return  res.render('login',{
+                message: 'Не съществува потребител с този Имейл'
+            });
+        }
         
         if(!results || !(await bcrypt.compare(pass,results[0].password))){
             res.status(401).render('login',{

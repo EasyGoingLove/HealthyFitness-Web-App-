@@ -127,15 +127,39 @@
                         <tr>
                             <th>Понеделник</th><td> 
                             {{#each monday}} 
-                            {{this}} <br> {{#ifEquals this "."}}</td ><td>{{/ifEquals}}
+                            <form action="/auth/saveMeeting" method="post">
+                            <input type="hidden" value="{{this}}" name="inf">
+                            {{this}} <br> 
+                            {{#ifEquals this "Състояние : Свободен"}}
+                             <button type="submit">Запази</button>
+                            {{/ifEquals}}
+                            {{#ifEquals this "."}}
+                            <input type="hidden" value="{{../user.name}}" name="name">
+                            <input type="hidden" value="{{../user.email}}" name="email">
+                            <input type="hidden" value="{{../user.phoneNum}}" name="phone">
+                            </form>
+                            </td><td>
+                            {{/ifEquals}}
                             {{/each}}
        
                        </tr>
 
                        <tr>
                             <th>Вторник</th><td>
-                            {{#each tuesday}} 
-                            {{this}} <br> {{#ifEquals this "."}}<button>Запази</button></td><td>{{/ifEquals}}
+                            {{#each tuesday}}
+                             <form action="/auth/saveMeeting" method="post">
+                            <input type="hidden" value="{{this}}" name="inf">
+                            {{this}} <br> 
+                            {{#ifEquals this "Състояние : Свободен"}}
+                             <button type="submit">Запази</button>
+                            {{/ifEquals}}
+                            {{#ifEquals this "."}}
+                            <input type="hidden" value="{{../user.name}}" name="name">
+                            <input type="hidden" value="{{../user.email}}" name="email">
+                            <input type="hidden" value="{{../user.phoneNum}}" name="phone">
+                            </form>
+                            </td><td>
+                            {{/ifEquals}}
                             {{/each}}
 
                        </tr>
@@ -143,35 +167,95 @@
                        <tr>
                            <th>Сряда</th><td>
                            {{#each wednesday}} 
-                            {{this}} <br> {{#ifEquals this "."}}</td><td>{{/ifEquals}}
+                           <form action="/auth/saveMeeting" method="post">
+                           <input type="hidden" value="{{this}}" name="inf">
+                            {{this}} <br> 
+                            {{#ifEquals this "Състояние : Свободен"}}
+                             <button type="submit">Запази</button>
+                            {{/ifEquals}}
+                            {{#ifEquals this "."}}
+                            <input type="hidden" value="{{../user.name}}" name="name">
+                            <input type="hidden" value="{{../user.email}}" name="email">
+                            <input type="hidden" value="{{../user.phoneNum}}" name="phone">
+                            </form>
+                            </td><td>
+                            {{/ifEquals}}
                             {{/each}}
                        </tr>
                        
                        <tr>
                            <th>Четвъртък</th><td>
                             {{#each thursday}} 
-                            {{this}} <br> {{#ifEquals this "."}}</td><td>{{/ifEquals}}
+                            <form action="/auth/saveMeeting" method="post">
+                            <input type="hidden" value="{{this}}" name="inf">
+                            {{this}} <br> 
+                            {{#ifEquals this "Състояние : Свободен"}}
+                             <button type="submit">Запази</button>
+                            {{/ifEquals}}
+                            {{#ifEquals this "."}}
+                            <input type="hidden" value="{{../user.name}}" name="name">
+                            <input type="hidden" value="{{../user.email}}" name="email">
+                            <input type="hidden" value="{{../user.phoneNum}}" name="phone">
+                            </form>
+                            </td><td>
+                            {{/ifEquals}}
                             {{/each}}
                        </tr>
 
                        <tr>
                            <th>Петък</th><td>
-                              {{#each friday}} 
-                            {{this}} <br> {{#ifEquals this "."}}</td><td>{{/ifEquals}}
+                            {{#each friday}} 
+                            <form action="/auth/saveMeeting" method="post">
+                            <input type="hidden" value="{{this}}" name="inf">
+                            {{this}} <br> 
+                            {{#ifEquals this "Състояние : Свободен"}}
+                             <button type="submit">Запази</button>
+                            {{/ifEquals}}
+                            {{#ifEquals this "."}}
+                            <input type="hidden" value="{{../user.name}}" name="name">
+                            <input type="hidden" value="{{../user.email}}" name="email">
+                            <input type="hidden" value="{{../user.phoneNum}}" name="phone">
+                            </form>
+                            </td><td>
+                            {{/ifEquals}}
                             {{/each}}
                        </tr>
 
                        <tr>
                            <th>Събота</th><td>
-                              {{#each saturday}} 
-                            {{this}} <br> {{#ifEquals this "."}} <button>sd</button> </td><td>{{/ifEquals}}
+                            {{#each saturday}} 
+                            <form action="/auth/saveMeeting" method="post">
+                            <input type="hidden" value="{{this}}" name="inf">
+                            {{this}} <br> 
+                            {{#ifEquals this "Състояние : Свободен"}}
+                             <button type="submit">Запази</button>
+                            {{/ifEquals}}
+                            {{#ifEquals this "."}}
+                            <input type="hidden" value="{{../user.name}}" name="name">
+                            <input type="hidden" value="{{../user.email}}" name="email">
+                            <input type="hidden" value="{{../user.phoneNum}}" name="phone">
+                            </form>
+                            </td><td>
+                            {{/ifEquals}}
                             {{/each}}
                        </tr>
 
                        <tr>
                            <th>Неделя</th><td>
-                              {{#each sunday}} 
-                            {{this}} <br> {{#ifEquals this "."}}</td><td>{{/ifEquals}}
+                            {{#each sunday}} 
+                            <form action="/auth/saveMeeting" method="post">
+                            <input type="hidden" value="{{this}}" name="inf">
+                            {{this}} <br> 
+                            {{#ifEquals this "Състояние : Свободен"}}
+                             <button type="submit">Запази</button>
+                            {{/ifEquals}}
+                            {{#ifEquals this "."}}
+                            <input type="hidden" value="{{../user.name}}" name="name">
+                            <input type="hidden" value="{{../user.email}}" name="email">
+                            <input type="hidden" value="{{../user.phoneNum}}" name="phone">
+                            </form>
+                            </td><td>
+                            {{/ifEquals}}
                             {{/each}}
                       </tr>
                       
